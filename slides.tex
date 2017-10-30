@@ -1,0 +1,76 @@
+\documentclass[usenames,dvipsnames,svgnames,table,aspectratio=169,mathserif]{beamer}
+
+\mode<presentation> {
+
+%\usetheme{default}
+\usetheme{Madrid}
+
+\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+
+\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{hyperref}
+\usepackage{apacite}
+\usepackage{fancyvrb}
+\usepackage{color}
+\usepackage{alltt}
+\usepackage{listings}
+\usepackage{framed}
+\usepackage{courier}
+\usepackage{minted}
+\usepackage{epstopdf}
+
+\hypersetup{colorlinks=false}
+
+\setbeamertemplate{bibliography entry title}{}
+\setbeamertemplate{bibliography entry location}{}
+\setbeamertemplate{bibliography entry note}{}
+\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{enumerate items}[default]
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{footline}{}
+
+\newminted{haskell}{}
+\newminted{java}{}
+\newminted{scala}{}
+
+\definecolor{g}{RGB}{0,100,0}
+\newcommand{\highlight}[1]{\colorbox{yellow}{#1}}
+\newcommand{\nega}[1]{\colorbox{yellow}{#1}}
+\newcommand{\posi}[1]{\colorbox{green}{#1}}
+\newcommand{\nl}{\vspace{\baselineskip}}
+\newcommand{\pnl}{\pause \nl}
+
+%%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Propagators]{Propagators} % The short title appears at the bottom of every slide, the full title is only on the title page
+\titlegraphic{\includegraphics[scale=0.2]{data61.eps}}
+\author{George Wilson} % Your name
+\institute[] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Data61/CSIRO\\ % Your institution for the title page
+\medskip
+\href{george.wilson@data61.csiro.au}{george.wilson@data61.csiro.au} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+
+%%%%%
+%%%%% Intro section
+%%%%%
+
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+
+\end{document} 
+
