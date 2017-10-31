@@ -5,14 +5,17 @@ SLIDES_PDF = slides.pdf
 LATEX = pdflatex -shell-escape
 LATEX_SLIDES = $(LATEX) $(SLIDES_TEX)
 
-.PHONY: slides spell open edit o clean
+.PHONY: all slides spell open edit o clean diagrams
 
 slides: slides.pdf
 
-slides.pdf: $(SLIDES_TEX)
+slides.pdf: $(SLIDES_TEX) diagrams
 	$(LATEX_SLIDES)
 	$(LATEX_SLIDES)
 	$(LATEX_SLIDES)
+
+diagrams:
+	$(MAKE) -C diagrams
 
 spell: $(SLIDES_TEX)
 	aspell check -len_GB $(SLIDES_TEX)
