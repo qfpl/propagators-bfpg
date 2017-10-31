@@ -30,4 +30,5 @@ o: open
 
 clean:
 	rm -rf $(SLIDES_PDF) *.loc *.toc *.log *.idx *.aux *.out *.nav *.snm *.vrb *.blg *.bbl
+	$(MAKE) -C diagrams clean
 
