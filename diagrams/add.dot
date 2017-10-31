@@ -1,0 +1,9 @@
+digraph Addition {
+    a [label=3];
+    b [label=5];
+    c [label=8];
+    plus [label="+",shape=square];
+    a -> plus;
+    b -> plus;
+    plus -> c;
+}

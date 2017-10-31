@@ -1,0 +1,10 @@
+digraph Addition {
+    graph [rankdir=LR];
+    a [label=3];
+    b [label=""];
+    c [label=""];
+    plus [label="+",shape=square];
+    a -> plus;
+    b -> plus;
+    plus -> c;
+}

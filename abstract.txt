@@ -1,0 +1,6 @@
+Propagators: An Introduction
+
+The propagator model has roots as far back as the 1970's, but it has recently seen renewed interest after Alexey Radul published his thesis and a technical report on the topic. Edward Kmett explored the idea in Haskell and gave a Lambda Jam talk about the mathematics underpinning well-behaved propagators and his ideas around scheduling strategies for propagator networks.
+
+But what is a propagator? Why are they cool? What kind of problems do they solve and how? This talk intends to answer these questions in an approachable way, and to provide an intuition for how propagator networks look and behave using diagrams.
+

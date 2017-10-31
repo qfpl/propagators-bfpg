@@ -17,4 +17,5 @@
 /_minted-slides/
 *-converted-to.pdf
 target/
+dist/
 
