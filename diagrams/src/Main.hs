@@ -9,13 +9,32 @@ import Data.GraphViz.Types.Monadic
 import Data.GraphViz.Types.Generalised
 import Data.Text.Lazy
 
+propagator :: Labellable a => n -> a -> Dot n
+propagator name val = node name [toLabel val, shape Square]
+
+cell :: Labellable a => n -> a -> Dot n
+cell name val = node name [toLabel val]
+
+-- left to right
+l2r :: Dot n
+l2r = graphAttrs [RankDir FromLeft]
+
+simpleProp :: DotGraph String
+simpleProp = digraph (Str (pack "Prop")) $ propagator "plus" "+"
+
+simpleCell1 :: DotGraph String
+simpleCell1 = digraph (Str (pack "Cell")) $ cell "cell" ""
+
+simpleCell2 :: DotGraph String
+simpleCell2 = digraph (Str (pack "Cell")) $ cell "cell" "3"
+
 addition :: String -> String -> String -> DotGraph String
 addition a b c = digraph (Str (pack "Addition")) $ do
-  graphAttrs [RankDir FromLeft]
-  node "a" [toLabel a]
-  node "b" [toLabel b]
-  node "c" [toLabel c]
-  node "plus" [toLabel "+", shape Square]
+  l2r
+  cell "a" a
+  cell "b" b
+  cell "c" c
+  propagator "plus" "+"
 
   "a" --> "plus"
   "b" --> "plus"
@@ -27,18 +46,18 @@ bidirectionalAddition a b c = digraph (Str (pack "bidirectional-addition")) $ do
 
   cluster (Num (Int 0)) $ do
     graphAttrs [style invis, rank MinRank, ordering OutEdges]
-    node "a" [toLabel a]
-    node "b" [toLabel b]
+    cell "a" a
+    cell "b" b
 
   cluster (Num (Int 1)) $ do
     graphAttrs [style invis, rank SameRank, ordering OutEdges]
-    node "min1" [toLabel "-", shape Square]
-    node "plus" [toLabel "+", shape Square]
-    node "min2" [toLabel "-", shape Square]
+    propagator "min1" "-"
+    propagator "plus" "+"
+    propagator "min2" "-"
   
   cluster (Num (Int 2)) $ do
     graphAttrs [style invis, rank MaxRank]
-    node "c" [toLabel c]
+    cell "c" c
  
   edge "a" "plus" [Weight (Int 50)]
   edge "a" "min1" [Weight (Int 50)]
@@ -57,6 +76,9 @@ dotFile fn = writeFile fn . unpack . printDotGraph
 
 main :: IO ()
 main = do
+  dotFile "prop.dot" simpleProp
+  dotFile "cell1.dot" simpleCell1
+  dotFile "cell2.dot" simpleCell2
   dotFile "add1.dot" (addition "" "" "")
   dotFile "add2.dot" (addition "3" "" "")
   dotFile "add3.dot" (addition "3" "4" "")

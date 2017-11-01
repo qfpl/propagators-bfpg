@@ -1,4 +1,4 @@
-all: clean slides
+all: slides
 
 SLIDES_TEX = slides.tex
 SLIDES_PDF = slides.pdf

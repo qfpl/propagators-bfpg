@@ -44,11 +44,13 @@
 \newcommand{\nl}{\vspace{\baselineskip}}
 \newcommand{\pnl}{\pause \nl}
 
+\newcommand{\imageslide}[1]{{\begin{frame}\begin{center}\includegraphics{#1}\end{center}\end{frame}}}
+
 %%----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Propagators]{Propagators} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Propagators]{Propagators: An Introduction} % The short title appears at the bottom of every slide, the full title is only on the title page
 \titlegraphic{\includegraphics[scale=0.2]{data61.eps}}
 \author{George Wilson} % Your name
 \institute[] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -71,6 +73,113 @@ Data61/CSIRO\\ % Your institution for the title page
 \titlepage % Print the title page as the first slide
 \end{frame}
 
+
+\begin{frame}
+
+\begin{columns}
+  \begin{column}{0.5\textwidth}
+    \begin{center}
+      \includegraphics[scale=0.015]{what-are-birds.jpg}
+
+      \nl
+
+      What?
+    \end{center}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \begin{center}
+      \includegraphics[scale=0.3]{for-what-purpose.jpg}
+
+      \nl
+
+      Why?
+    \end{center}
+  \end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+The propagator model is a model of computation
+
+\nl
+
+We model computations as {\it propagator networks}
+\end{frame}
+
+
+\begin{frame}
+
+A propagator network comprises
+\begin{itemize}
+\item cells
+\item propagators
+\item connections between cells and propagators
+\end{itemize}
+
+\end{frame}
+
+
+\imageslide{diagrams/cell1.pdf}
+\imageslide{diagrams/cell2.pdf}
+\imageslide{diagrams/prop.pdf}
+
+\imageslide{diagrams/add1.pdf}
+\imageslide{diagrams/add2.pdf}
+\imageslide{diagrams/add3.pdf}
+\imageslide{diagrams/add4.pdf}
+
+
+\begin{frame}
+  \begin{center}
+    \begin{LARGE}
+      $z \leftarrow x + y$
+    \end{LARGE}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}
+  \begin{center}
+    \begin{LARGE}
+      $z = x + y$
+    \end{LARGE}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}
+  \begin{center}
+    \begin{LARGE}
+      $7 = x + 4$
+    \end{LARGE}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}
+  \begin{center}
+    \begin{LARGE}
+      $z \leftarrow x + y$
+
+      \nl
+
+      $x \leftarrow z - y$
+
+      \nl
+
+      $y \leftarrow z - x$
+
+    \end{LARGE}
+  \end{center}
+\end{frame}
+
+
+\imageslide{diagrams/badd1.pdf}
+\imageslide{diagrams/badd2.pdf}
+\imageslide{diagrams/badd3.pdf}
+\imageslide{diagrams/badd4.pdf}
 
 \end{document} 
 
