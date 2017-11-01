@@ -22,6 +22,7 @@
 \usepackage{courier}
 \usepackage{minted}
 \usepackage{epstopdf}
+\usepackage{xifthen}
 
 \hypersetup{colorlinks=false}
 
@@ -44,7 +45,11 @@
 \newcommand{\nl}{\vspace{\baselineskip}}
 \newcommand{\pnl}{\pause \nl}
 
-\newcommand{\imageslide}[1]{{\begin{frame}\begin{center}\includegraphics{#1}\end{center}\end{frame}}}
+\newcommand{\imageslide}[2][1]{{
+\begin{frame}\begin{center}
+\includegraphics[scale=#1]{#2}
+\end{center}\end{frame}
+}}
 
 %%----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -180,6 +185,18 @@ A propagator network comprises
 \imageslide{diagrams/badd2.pdf}
 \imageslide{diagrams/badd3.pdf}
 \imageslide{diagrams/badd4.pdf}
+
+
+\begin{frame}
+Propagators let us express multidirectional relationships
+\end{frame}
+
+\imageslide[0.8]{diagrams/celsius1.pdf}
+\imageslide[0.8]{diagrams/celsius2.pdf}
+\imageslide[0.8]{diagrams/celsius3.pdf}
+\imageslide[0.8]{diagrams/celsius4.pdf}
+\imageslide[0.65]{diagrams/celsius5.pdf}
+
 
 \end{document} 
 
