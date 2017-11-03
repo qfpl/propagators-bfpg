@@ -30,13 +30,32 @@ cluster_' i extras d =
     d
 
 simpleProp :: DotGraph String
-simpleProp = digraph (Str (pack "Prop")) $ propagator "plus" "+"
+simpleProp = digraph (Str (pack "Prop")) $ propagator "plus" "?"
 
 simpleCell1 :: DotGraph String
 simpleCell1 = digraph (Str (pack "Cell")) $ cell "cell" ""
 
 simpleCell2 :: DotGraph String
 simpleCell2 = digraph (Str (pack "Cell")) $ cell "cell" "3"
+
+simpleCell3 :: DotGraph String
+simpleCell3 = digraph (Str (pack "Cell")) $ cell "cell" "'c'"
+
+always :: String -> String -> DotGraph String
+always p c = digraph (Str (pack "always")) $ do
+  l2r
+  propagator "p" p
+  cell "c" c
+  "p" --> "c"
+
+always2 :: String -> String -> DotGraph String
+always2 p c = digraph (Str (pack "always")) $ do
+  l2r
+  propagator "p" p
+  cell "c1" c
+  cell "c2" c
+  "p" --> "c1"
+  "p" --> "c2"
 
 addition :: String -> String -> String -> DotGraph String
 addition a b c = digraph (Str (pack "Addition")) $ do
@@ -169,6 +188,16 @@ celsiusAdd x y c m f = digraph (Str (pack "celsiusAdd")) $ do
   "min2" --> "a"
   "plus2" --> "c"
 
+solo :: String -> String -> String -> DotGraph String
+solo i p o = digraph (Str (pack "toUpper")) $ do
+  l2r
+  cell "in" i
+  propagator "prop" p
+  cell "out" o
+
+  "in" --> "prop"
+  "prop" --> "out"
+
 dotFile :: String -> DotGraph String -> IO ()
 dotFile fn = writeFile fn . unpack . printDotGraph
 
@@ -182,10 +211,18 @@ main = do
   dotFile "prop.dot" simpleProp
   dotFile "cell1.dot" simpleCell1
   dotFile "cell2.dot" simpleCell2
+  dotFile "cell3.dot" simpleCell3
   dotFile "add1.dot" (addition "" "" "")
   dotFile "add2.dot" (addition "3" "" "")
   dotFile "add3.dot" (addition "3" "4" "")
   dotFile "add4.dot" (addition "3" "4" "7")
+  dotFile "always1.dot" (always "always 3" "")
+  dotFile "always2.dot" (always "always 3" "3")
+  dotFile "always3.dot" (always2 "always 3" "")
+  dotFile "always4.dot" (always2 "always 3" "3")
+  dotFile "upper1.dot" (solo "" "toUpper" "")
+  dotFile "upper2.dot" (solo "\'q\'" "toUpper" "")
+  dotFile "upper3.dot" (solo "\'q\'" "toUpper" "'Q'")
   dotFile "badd1.dot" (bidirectionalAddition "" "" "")
   dotFile "badd2.dot" (bidirectionalAddition "" "4" "")
   dotFile "badd3.dot" (bidirectionalAddition "" "4" "7")

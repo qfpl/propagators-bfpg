@@ -23,6 +23,10 @@
 \usepackage{minted}
 \usepackage{epstopdf}
 \usepackage{xifthen}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{gensymb}
 
 \hypersetup{colorlinks=false}
 
@@ -61,11 +65,11 @@
 }}
 
 \newcommand{\ctof}{{
-\LARGE $F = C \times \frac{9}{5} + 32$
+\LARGE $\degree F = \degree C \times \frac{9}{5} + 32$
 }}
 
 \newcommand{\ftoc}{{
-\LARGE $C = (F - 32) \times \frac{5}{9}$
+\LARGE $\degree C = (\degree F - 32) \div \frac{9}{5}$
 }}
 
 %%----------------------------------------------------------------------------------------
@@ -228,10 +232,22 @@ A propagator network comprises
 \imageslide{diagrams/cell2.pdf}
 \imageslide{diagrams/prop.pdf}
 
+\imageslide{diagrams/always1.pdf}
+\imageslide{diagrams/always2.pdf}
+\imageslide{diagrams/always3.pdf}
+\imageslide{diagrams/always4.pdf}
+
+\imageslide{diagrams/upper1.pdf}
+\imageslide{diagrams/upper2.pdf}
+\imageslide{diagrams/upper3.pdf}
+
 \imageslide{diagrams/add1.pdf}
 \imageslide{diagrams/add2.pdf}
 \imageslide{diagrams/add3.pdf}
 \imageslide{diagrams/add4.pdf}
+
+
+%%%%% bidirectionality
 
 
 \begin{frame}
@@ -295,7 +311,9 @@ A propagator network comprises
 
 
 \begin{frame}
-Propagators let us express multidirectional relationships
+\begin{center}
+{\LARGE Propagators let us express multidirectional relationships!}
+\end{center}
 \end{frame}
 
 \imagetextslide[0.8]{diagrams/celsius1.pdf}{\ctof}
@@ -314,6 +332,67 @@ Propagators let us express multidirectional relationships
 \imageslide[0.65]{diagrams/celsius14.pdf}
 \imageslide[0.65]{diagrams/celsius15.pdf}
 \imageslide[0.65]{diagrams/celsius16.pdf}
+
+%%%%% partiality
+
+
+\begin{frame}
+\begin{center}
+{\LARGE
+What types are the values of the cells?
+}
+\end{center}
+\end{frame}
+
+
+\imageslide{diagrams/cell3.pdf}
+\imageslide{diagrams/cell2.pdf}
+\imageslide{diagrams/cell1.pdf}
+
+
+\begin{frame}
+\begin{center}
+{\LARGE {\tt data Maybe a = Nothing | Just a}}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\begin{center}
+{\LARGE Partial information!}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\begin{center}
+\LARGE ?
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\begin{center}
+\Huge $[1,5]$
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+TODO interval arithmetic examples
+\end{frame}
+
+
+\begin{frame}
+\begin{center}
+\Huge $\{True,\ False\}$
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+TODO set intersection examples
+\end{frame}
 
 
 \end{document} 
