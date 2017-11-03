@@ -1,4 +1,4 @@
-\documentclass[usenames,dvipsnames,svgnames,table,aspectratio=169,mathserif]{beamer}
+\documentclass[usenames,dvipsnames,svgnames,table,aspectratio=1610,mathserif]{beamer}
 
 \mode<presentation> {
 
@@ -29,8 +29,8 @@
 \setbeamertemplate{bibliography entry title}{}
 \setbeamertemplate{bibliography entry location}{}
 \setbeamertemplate{bibliography entry note}{}
-\setbeamertemplate{itemize items}[default]
-\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[circle]
 \beamertemplatenavigationsymbolsempty
 \setbeamertemplate{footline}{}
 
@@ -49,6 +49,23 @@
 \begin{frame}\begin{center}
 \includegraphics[scale=#1]{#2}
 \end{center}\end{frame}
+}}
+
+\newcommand{\imagetextslide}[3][1]{{
+\begin{frame}\begin{center}
+
+{#3}
+
+\includegraphics[scale=#1]{#2}
+\end{center}\end{frame}
+}}
+
+\newcommand{\ctof}{{
+\LARGE $F = C \times \frac{9}{5} + 32$
+}}
+
+\newcommand{\ftoc}{{
+\LARGE $C = (F - 32) \times \frac{5}{9}$
 }}
 
 %%----------------------------------------------------------------------------------------
@@ -105,8 +122,89 @@ Data61/CSIRO\\ % Your institution for the title page
 \end{frame}
 
 
+%%%%%
+%%%%% History
+%%%%%
+
+
 \begin{frame}
-The propagator model is a model of computation
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+Roots as early as the 1970's at MIT
+\begin{itemize}
+  \item Guy L. Steele Jr. 
+  \item Gerald J. Sussman
+  \item Richard Stallman
+\end{itemize}
+
+\nl
+
+More recently:
+\begin{itemize}
+  \item Alexey Radul
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[scale=0.6]{circuit.png}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+\begin{verbatim}
+(define (map f xs)
+  (cond ((null? xs) '())
+        (else (cons (f (car xs))
+                    (map f (cdr xs)))))))
+\end{verbatim}
+\end{frame}
+
+
+\begin{frame}
+\begin{columns}
+\begin{column}{0.005\textwidth}
+\end{column}
+\begin{column}{0.4\textwidth}
+And then
+\begin{itemize}
+\item Edward Kmett
+\end{itemize}
+\nl
+\nl
+\includegraphics[scale=0.2]{haskell.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[scale=0.4]{hasse.png}
+\nl
+\nl
+{\LARGE
+  $x \le y \implies f(x) \le f(y)$
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+%%%%%
+%%%%% What and why
+%%%%%
+
+
+\begin{frame}
+
+\begin{center}
+{\Huge Propagators}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}
+The {\it propagator model} is a model of computation
 
 \nl
 
@@ -166,6 +264,15 @@ A propagator network comprises
 \begin{frame}
   \begin{center}
     \begin{LARGE}
+      $z = x + y$
+    \end{LARGE}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}
+  \begin{center}
+    \begin{LARGE}
       $z \leftarrow x + y$
 
       \nl
@@ -191,11 +298,22 @@ A propagator network comprises
 Propagators let us express multidirectional relationships
 \end{frame}
 
-\imageslide[0.8]{diagrams/celsius1.pdf}
-\imageslide[0.8]{diagrams/celsius2.pdf}
-\imageslide[0.8]{diagrams/celsius3.pdf}
-\imageslide[0.8]{diagrams/celsius4.pdf}
-\imageslide[0.65]{diagrams/celsius5.pdf}
+\imagetextslide[0.8]{diagrams/celsius1.pdf}{\ctof}
+\imagetextslide[0.8]{diagrams/celsius2.pdf}{\ctof}
+\imagetextslide[0.8]{diagrams/celsius3.pdf}{\ctof}
+\imagetextslide[0.8]{diagrams/celsius4.pdf}{\ctof}
+\imagetextslide[0.65]{diagrams/celsius5.pdf}{\ctof \\ \nl \ftoc}
+\imagetextslide[0.65]{diagrams/celsius6.pdf}{\ctof \\ \nl \ftoc}
+\imagetextslide[0.65]{diagrams/celsius7.pdf}{\ctof \\ \nl \ftoc}
+\imagetextslide[0.65]{diagrams/celsius8.pdf}{\ctof \\ \nl \ftoc}
+\imagetextslide[0.65]{diagrams/celsius9.pdf}{\ctof \\ \nl \ftoc}
+\imagetextslide[0.65]{diagrams/celsius10.pdf}{\ctof \\ \nl \ftoc}
+\imagetextslide[0.65]{diagrams/celsius11.pdf}{\ctof \\ \nl \ftoc}
+\imageslide[0.65]{diagrams/celsius12.pdf}
+\imageslide[0.65]{diagrams/celsius13.pdf}
+\imageslide[0.65]{diagrams/celsius14.pdf}
+\imageslide[0.65]{diagrams/celsius15.pdf}
+\imageslide[0.65]{diagrams/celsius16.pdf}
 
 
 \end{document} 

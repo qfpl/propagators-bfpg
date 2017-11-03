@@ -1,6 +1,5 @@
 module Main where
 
-import Control.Applicative ((<|>))
 import Data.GraphViz.Attributes
 import Data.GraphViz.Attributes.Complete
 import Data.GraphViz.Types
@@ -54,20 +53,25 @@ addition a b c = digraph (Str (pack "Addition")) $ do
 bidirectionalAddition :: String -> String -> String -> DotGraph String
 bidirectionalAddition a b c = digraph (Str (pack "bidirectional-addition")) $ do
   l2r
+  bidirectionalAddition_ a b c
+  invisEdge' "a" "c" [Weight (Int 0), MinLen 2]
+  invisEdge' "b" "c" [Weight (Int 0), MinLen 2]
 
+bidirectionalAddition_ :: String -> String -> String -> DotM String ()
+bidirectionalAddition_ a b c = do
   cluster_ 0 $ do
-    graphAttrs [style invis, rank MinRank, ordering OutEdges]
+    graphAttrs [style invis]
     cell "a" a
     cell "b" b
 
   cluster_ 1 $ do
-    graphAttrs [style invis, rank SameRank, ordering OutEdges]
+    graphAttrs [style invis]
     propagator "min1" "-"
     propagator "plus" "+"
     propagator "min2" "-"
   
   cluster_ 2 $ do
-    graphAttrs [style invis, rank MaxRank]
+    graphAttrs [style invis]
     cell "c" c
  
   edge "a" "plus" [Weight (Int 50)]
@@ -79,8 +83,6 @@ bidirectionalAddition a b c = digraph (Str (pack "bidirectional-addition")) $ do
   edge "min1" "b" [Weight (Int 50)]
   edge "min2" "a" [Weight (Int 50)]
   edge "plus" "c" [Weight (Int 50)]
-  invisEdge' "a" "c" [Weight (Int 0), MinLen 2]
-  invisEdge' "b" "c" [Weight (Int 0), MinLen 2]
 
 invisEdge :: (NodeList n f, NodeList n t) => f -> t -> Dot n
 invisEdge s t = invisEdge' s t []
@@ -88,15 +90,12 @@ invisEdge s t = invisEdge' s t []
 invisEdge' :: (NodeList n t, NodeList n f) => f -> t -> [Attribute] -> Dot n
 invisEdge' s t extras = edge s t (style invis : extras)
 
-celsius_ :: Maybe Double -> Bool -> Maybe Double -> DotM String ()
-celsius_ c b f = do
-  l2r
-
+celsius_ :: Maybe Double -> Maybe Double -> Maybe Double -> DotM String ()
+celsius_ c m f = do
   cluster_ 1 $ do
     cell "c" (foldMap show c)
     propagator "times" "×"
-    cell "m" $
-      if b then foldMap show ((fmap (\x -> x*9/5) c) <|> fmap (\x -> x * 5/9) f) else ""
+    cell "m" (foldMap show m)
     propagator "plus" "+"
     cell "f" (foldMap show f)
 
@@ -119,28 +118,64 @@ celsius_ c b f = do
   edge "c" "c" [xLabel "C", penWidth 0, Dir NoDir]
   edge "f" "f" [xLabel "F", penWidth 0, Dir NoDir]
 
-celsius :: Maybe Double -> Bool -> Maybe Double -> DotGraph String
-celsius c b f = digraph (Str (pack "c2f")) $ celsius_ c b f
+celsius :: Maybe Double -> Maybe Double -> Maybe Double -> DotGraph String
+celsius c m f = digraph (Str (pack "c2f")) $ do
+  l2r
+  celsius_ c m f
 
-celsiusBi :: Maybe Double -> Bool -> Maybe Double -> DotGraph String
-celsiusBi c b f = digraph (Str (pack "c2f")) $ do
+celsiusBi :: Maybe Double -> Maybe Double -> Maybe Double -> DotGraph String
+celsiusBi c m f = digraph (Str (pack "c2f")) $ do
+  l2r
+  celsiusBi_ c m f
 
-  cluster_ 2 $ do
-    propagator "times2" "×"
-    cell "fn" "5/9"
-
+celsiusBi_ :: Maybe Double -> Maybe Double -> Maybe Double -> DotM String ()
+celsiusBi_ c m f = do
+  propagator "div" "÷"
   propagator "minus" "-"
-  celsius_ c b f
+  celsius_ c m f
 
-  edge "f" "minus" [Weight (Int 1)]
+  "f" --> "minus"
   "tt" --> "minus"
-  edge "minus" "m" [Weight (Int 1)]
-  edge "m" "times2" [Weight (Int 5)]
-  "fn" --> "times2"
-  edge "times2" "c" [Weight (Int 5)]
+  "minus" --> "m"
+  "m" --> "div"
+  "nf" --> "div"
+  "div" --> "c"
+
+celsiusAdd :: Maybe Double -> Maybe Double -> Maybe Double -> Maybe Double -> Maybe Double -> DotGraph String
+celsiusAdd x y c m f = digraph (Str (pack "celsiusAdd")) $ do
+  l2r
+
+  celsiusBi_ c m f
+
+  propagator "div" "÷"
+
+  cluster_ 11 $ do
+    propagator "min1" "-"
+    propagator "min2" "-"
+  
+  cluster_ 12 $ do
+    cell "b" (foldMap show y)
+    cell "a" (foldMap show x)
+ 
+  propagator "plus2" "+"
+
+  "a" --> "min1"
+  "a" --> "plus2"
+  "b" --> "plus2"
+  "b" --> "min2"
+  "c" --> "min1"
+  "c" --> "min2"
+  "min1" --> "b"
+  "min2" --> "a"
+  "plus2" --> "c"
 
 dotFile :: String -> DotGraph String -> IO ()
 dotFile fn = writeFile fn . unpack . printDotGraph
+
+twentyFour, fortyThree, seventyFive :: Maybe Double
+twentyFour = Just 24
+fortyThree = Just 43.2
+seventyFive = Just 75.2
 
 main :: IO ()
 main = do
@@ -155,9 +190,20 @@ main = do
   dotFile "badd2.dot" (bidirectionalAddition "" "4" "")
   dotFile "badd3.dot" (bidirectionalAddition "" "4" "7")
   dotFile "badd4.dot" (bidirectionalAddition "3" "4" "7")
-  dotFile "celsius1.dot" (celsius Nothing False Nothing)
-  dotFile "celsius2.dot" (celsius (Just 24) False Nothing)
-  dotFile "celsius3.dot" (celsius (Just 24) True Nothing)
-  dotFile "celsius4.dot" (celsius (Just 24) True (Just 75.2))
-  dotFile "celsius5.dot" (celsiusBi Nothing False Nothing)
+  dotFile "celsius1.dot" (celsius Nothing Nothing Nothing)
+  dotFile "celsius2.dot" (celsius twentyFour Nothing Nothing)
+  dotFile "celsius3.dot" (celsius twentyFour fortyThree Nothing)
+  dotFile "celsius4.dot" (celsius twentyFour fortyThree seventyFive)
+  dotFile "celsius5.dot" (celsiusBi Nothing Nothing Nothing)
+  dotFile "celsius6.dot" (celsiusBi Nothing Nothing seventyFive)
+  dotFile "celsius7.dot" (celsiusBi Nothing fortyThree seventyFive)
+  dotFile "celsius8.dot" (celsiusBi twentyFour fortyThree seventyFive)
+  dotFile "celsius9.dot" (celsiusBi Nothing Nothing Nothing)
+  dotFile "celsius10.dot" (celsiusBi Nothing fortyThree Nothing)
+  dotFile "celsius11.dot" (celsiusBi twentyFour fortyThree seventyFive)
+  dotFile "celsius12.dot" (celsiusAdd Nothing (Just 3) Nothing Nothing Nothing)
+  dotFile "celsius13.dot" (celsiusAdd Nothing (Just 3) Nothing Nothing seventyFive)
+  dotFile "celsius14.dot" (celsiusAdd Nothing (Just 3) Nothing fortyThree seventyFive)
+  dotFile "celsius15.dot" (celsiusAdd Nothing (Just 3) twentyFour fortyThree seventyFive)
+  dotFile "celsius16.dot" (celsiusAdd ((subtract 3) <$> twentyFour) (Just 3) twentyFour fortyThree seventyFive)
  

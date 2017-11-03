@@ -11,7 +11,7 @@ adds: add1.pdf add2.pdf add3.pdf add4.pdf
 
 badds: badd1.pdf badd2.pdf badd3.pdf badd4.pdf
 
-celsius: celsius1.pdf celsius2.pdf celsius3.pdf celsius4.pdf celsius5.pdf
+celsius: celsius1.pdf celsius2.pdf celsius3.pdf celsius4.pdf celsius5.pdf celsius6.pdf celsius7.pdf celsius8.pdf celsius9.pdf celsius10.pdf celsius11.pdf celsius12.pdf celsius13.pdf celsius14.pdf celsius15.pdf celsius16.pdf
 
 %.dot: src/Main.hs
 	nix-shell --command "cabal run"
