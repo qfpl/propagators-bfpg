@@ -1,0 +1,14 @@
+digraph contradiction {
+    graph [rankdir=LR];
+    a3 [label="always 3"
+       ,shape=square];
+    a4 [label="always 4"
+       ,shape=square];
+    a [label=""];
+    b [label=""];
+    c [label=""];
+    a3 -> a;
+    a3 -> b;
+    a4 -> b;
+    a4 -> c;
+}

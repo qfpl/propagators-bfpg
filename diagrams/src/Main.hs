@@ -30,7 +30,7 @@ cluster_' i extras d =
     d
 
 simpleProp :: DotGraph String
-simpleProp = digraph (Str (pack "Prop")) $ propagator "plus" "?"
+simpleProp = digraph (Str (pack "Prop")) $ propagator "toUpper" "toUpper"
 
 simpleCell1 :: DotGraph String
 simpleCell1 = digraph (Str (pack "Cell")) $ cell "cell" ""
@@ -198,6 +198,22 @@ solo i p o = digraph (Str (pack "toUpper")) $ do
   "in" --> "prop"
   "prop" --> "out"
 
+contradiction :: String -> String -> String -> DotGraph String
+contradiction a b c = digraph (Str (pack "contradiction")) $ do
+  l2r
+
+  propagator "a3" "always 3"
+  propagator "a4" "always 4"
+
+  cell "a" a
+  cell "b" b
+  cell "c" c
+
+  "a3" --> "a"
+  "a3" --> "b"
+  "a4" --> "b"
+  "a4" --> "c"
+
 dotFile :: String -> DotGraph String -> IO ()
 dotFile fn = writeFile fn . unpack . printDotGraph
 
@@ -243,4 +259,7 @@ main = do
   dotFile "celsius14.dot" (celsiusAdd Nothing (Just 3) Nothing fortyThree seventyFive)
   dotFile "celsius15.dot" (celsiusAdd Nothing (Just 3) twentyFour fortyThree seventyFive)
   dotFile "celsius16.dot" (celsiusAdd ((subtract 3) <$> twentyFour) (Just 3) twentyFour fortyThree seventyFive)
+  dotFile "contradiction1.dot" (contradiction "" "" "")
+  dotFile "contradiction2.dot" (contradiction "3" "" "4")
+  dotFile "contradiction3.dot" (contradiction "3" "?" "4")
  
