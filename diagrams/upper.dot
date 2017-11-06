@@ -1,9 +1,0 @@
-digraph toUpper {
-    graph [rankdir=LR];
-    in [label="'q'"];
-    prop [label=toUpper
-         ,shape=square];
-    out [label="'Q'"];
-    in -> prop;
-    prop -> out;
-}

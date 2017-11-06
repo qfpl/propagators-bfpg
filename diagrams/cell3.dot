@@ -1,3 +1,0 @@
-digraph Cell {
-    cell [label="'c'"];
-}

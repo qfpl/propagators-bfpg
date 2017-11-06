@@ -63,6 +63,12 @@
 \end{center}\end{frame}
 }}
 
+\newcommand{\imageslideleft}[2][1]{{
+\begin{frame}
+\includegraphics[scale=#1]{#2}
+\end{frame}
+}}
+
 \newcommand{\imagetextslide}[3][1]{{
 \begin{frame}\begin{center}
 
@@ -372,13 +378,13 @@ What types are the values of the cells?
 }}
 
 
-\imageslide{diagrams/always1.pdf}
-\imageslide{diagrams/always2.pdf}
-\imageslide{diagrams/always3.pdf}
-\imageslide{diagrams/always4.pdf}
-\imageslide{diagrams/contradiction1.pdf}
-\imageslide{diagrams/contradiction2.pdf}
-\imageslide{diagrams/contradiction3.pdf}
+\imageslideleft{diagrams/always1.pdf}
+\imageslideleft{diagrams/always2.pdf}
+\imageslideleft{diagrams/always3.pdf}
+\imageslideleft{diagrams/always4.pdf}
+\imageslideleft{diagrams/contradiction1.pdf}
+\imageslideleft{diagrams/contradiction2.pdf}
+\imageslideleft{diagrams/contradiction3.pdf}
 
 \textslide{{\Huge \bf
 :(
@@ -415,10 +421,24 @@ instance Eq a => Monoid (Perhaps a) where
 
 \end{frame}
 
-\textslide{\LARGE Partial information!}
+
+\imageslideleft{diagrams/contradiction4.pdf}
+\imageslideleft{diagrams/contradiction5.pdf}
+\imageslideleft{diagrams/contradiction6.pdf}
+\imageslideleft{diagrams/contradiction7.pdf}
+\imageslideleft{diagrams/contradiction8.pdf}
+\imageslideleft{diagrams/contradiction9.pdf}
 
 
-\textslide{\LARGE ?}
+\textslide{
+{\LARGE Partial information that supports merging!}
+
+But is {\tt Monoid} enough?
+}
+
+
+
+\textslide{\LARGE Other examples?}
 
 \begin{frame}
 \begin{center}

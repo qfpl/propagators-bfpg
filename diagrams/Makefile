@@ -15,7 +15,7 @@ celsius: celsius1.pdf celsius2.pdf celsius3.pdf celsius4.pdf celsius5.pdf celsiu
 
 upper: upper1.pdf upper2.pdf upper3.pdf
 
-contradiction: contradiction1.pdf contradiction2.pdf contradiction3.pdf
+contradiction: contradiction1.pdf contradiction2.pdf contradiction3.pdf contradiction4.pdf contradiction5.pdf contradiction6.pdf contradiction7.pdf contradiction8.pdf contradiction9.pdf
 
 %.dot: src/Main.hs
 	nix-shell --command "cabal run"
