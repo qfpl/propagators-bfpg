@@ -57,6 +57,14 @@
 \end{center}\end{frame}
 }}
 
+\newcommand{\codeslide}[1]{{
+\begin{frame}[fragile]
+\begin{haskellcode}
+#1
+\end{haskellcode}
+\end{frame}
+}}
+
 \newcommand{\imageslide}[2][1]{{
 \begin{frame}\begin{center}
 \includegraphics[scale=#1]{#2}
@@ -164,7 +172,7 @@ More recently:
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
-\includegraphics[scale=0.6]{circuit.png}
+\includegraphics[scale=0.6]{circuit.jpg}
 \end{column}
 \end{columns}
 
@@ -360,6 +368,8 @@ A propagator network comprises
 
 \textslide{\Large{We can combine networks into larger networks!}}
 
+\textslide{\Huge{?}}
+
 %%%%% partiality
 
 
@@ -373,18 +383,19 @@ What types are the values of the cells?
 \imageslide{diagrams/cell1.pdf}
 
 
-\textslide{{\LARGE
-  {\tt data Maybe a = Nothing | Just a}
-}}
+\begin{frame}[fragile]
+\begin{haskellcode}
+data Maybe a = Nothing | Just a
+\end{haskellcode}
+\end{frame}
 
 
-\imageslideleft{diagrams/always1.pdf}
-\imageslideleft{diagrams/always2.pdf}
-\imageslideleft{diagrams/always3.pdf}
-\imageslideleft{diagrams/always4.pdf}
-\imageslideleft{diagrams/contradiction1.pdf}
-\imageslideleft{diagrams/contradiction2.pdf}
-\imageslideleft{diagrams/contradiction3.pdf}
+\imageslide{diagrams/maybe1.pdf}
+\imageslide{diagrams/maybe2.pdf}
+\imageslide{diagrams/maybe3.pdf}
+\imageslide{diagrams/maybe4.pdf}
+
+\imageslide[0.6]{diagrams/doubleplus3.pdf}
 
 \textslide{{\Huge \bf
 :(
@@ -397,6 +408,17 @@ What types are the values of the cells?
 }
 
 
+%\imageslide[0.6]{diagrams/doubleplus3.pdf}
+
+%\imageslideleft{diagrams/always1.pdf}
+
+%\imageslideleft{diagrams/always2.pdf}
+%\imageslideleft{diagrams/always3.pdf}
+%\imageslideleft{diagrams/always4.pdf}
+%\imageslideleft{diagrams/contradiction1.pdf}
+%\imageslideleft{diagrams/contradiction2.pdf}
+%\imageslideleft{diagrams/contradiction3.pdf}
+
 \begin{frame}[fragile]
 
 \begin{haskellcode}
@@ -407,6 +429,7 @@ data Perhaps a = Unknown | Known a | Contradiction
 
 \begin{haskellcode}
 instance Eq a => Monoid (Perhaps a) where
+
   mempty = Unknown
 
   mappend Unknown x           = x
@@ -422,16 +445,26 @@ instance Eq a => Monoid (Perhaps a) where
 \end{frame}
 
 
-\imageslideleft{diagrams/contradiction4.pdf}
-\imageslideleft{diagrams/contradiction5.pdf}
-\imageslideleft{diagrams/contradiction6.pdf}
-\imageslideleft{diagrams/contradiction7.pdf}
-\imageslideleft{diagrams/contradiction8.pdf}
-\imageslideleft{diagrams/contradiction9.pdf}
+%\imageslideleft{diagrams/contradiction4.pdf}
+%\imageslideleft{diagrams/contradiction5.pdf}
+%\imageslideleft{diagrams/contradiction6.pdf}
+%\imageslideleft{diagrams/contradiction7.pdf}
+%\imageslideleft{diagrams/contradiction8.pdf}
+%\imageslideleft{diagrams/contradiction9.pdf}
+
+\imageslide[0.6]{diagrams/doubleplus4.pdf}
+\imageslide[0.6]{diagrams/doubleplus5.pdf}
+\imageslide[0.6]{diagrams/doubleplus6.pdf}
+\imageslide[0.6]{diagrams/doubleplus7.pdf}
+\imageslide[0.6]{diagrams/doubleplus8.pdf}
+
+\textslide{\LARGE{Will other monoids work?}}
 
 
 \textslide{
 {\LARGE Partial information that supports merging!}
+
+\pnl
 
 But is {\tt Monoid} enough?
 }

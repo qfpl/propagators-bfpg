@@ -20,6 +20,9 @@ cell' name val extras = node name $ toLabel val : extras
 l2r :: Dot n
 l2r = graphAttrs [RankDir FromLeft]
 
+(<--) :: (NodeList n a) => a -> a -> Dot n
+t <-- s = edge t s [Dir Back]
+
 cluster_ :: Int -> DotM n a -> Dot n
 cluster_ i d = cluster_' i [] d
 
@@ -188,6 +191,23 @@ celsiusAdd x y c m f = digraph (Str (pack "celsiusAdd")) $ do
   "min2" --> "a"
   "plus2" --> "c"
 
+doubleplus :: String -> String -> String -> String -> String -> DotGraph String
+doubleplus i1 i2 o j1 j2 = digraph (Str (pack "doubleplus")) $ do
+  cell "i1" i1
+  cell "i2" i2
+  propagator "plus1" "+"
+  cell "o" o
+  propagator "plus2" "+"
+  cell "j1" j1
+  cell "j2" j2
+
+  "i1" --> "plus1"
+  "i2" --> "plus1"
+  "plus1" --> "o"
+  "o" <-- "plus2"
+  "plus2" <-- "j1"
+  "plus2" <-- "j2"
+
 solo :: String -> String -> String -> DotGraph String
 solo i p o = digraph (Str (pack "toUpper")) $ do
   l2r
@@ -259,6 +279,18 @@ main = do
   dotFile "always2.dot" (always "always 3" "Just 3")
   dotFile "always3.dot" (always2 "always 3" "Nothing")
   dotFile "always4.dot" (always2 "always 3" "Just 3")
+  dotFile "maybe1.dot" (addition "Nothing" "Nothing" "Nothing")
+  dotFile "maybe2.dot" (addition "Just 3" "Nothing" "Nothing")
+  dotFile "maybe3.dot" (addition "Just 3" "Just 4" "Nothing")
+  dotFile "maybe4.dot" (addition "Just 3" "Just 4" "Just 7")
+  dotFile "doubleplus1.dot" (doubleplus "3" "4" "" "6" "6")
+  dotFile "doubleplus2.dot" (doubleplus "3" "4" "?" "6" "6")
+  dotFile "doubleplus3.dot" (doubleplus "Just 3" "Just 4" "?" "Just 6" "Just 6")
+  dotFile "doubleplus4.dot" (doubleplus "Known 3" "Known 4" "Unknown" "Known 6" "Known 6")
+  dotFile "doubleplus5.dot" (doubleplus "Known 3" "Known 4" "Known 12 <> Unknown" "Known 6" "Known 6")
+  dotFile "doubleplus6.dot" (doubleplus "Known 3" "Known 4" "Known 7 <> Known 12 <> Unknown" "Known 6" "Known 6")
+  dotFile "doubleplus7.dot" (doubleplus "Known 3" "Known 4" "Known 7 <> Known 12" "Known 6" "Known 6")
+  dotFile "doubleplus8.dot" (doubleplus "Known 3" "Known 4" "Contradiction" "Known 6" "Known 6")
   dotFile "contradiction1.dot" (contradiction "Nothing" "Nothing" "Nothing")
   dotFile "contradiction2.dot" (contradiction "Just 3" "Nothing" "Just 4")
   dotFile "contradiction3.dot" (contradiction "Just 3" "      ?     " "Just 4")

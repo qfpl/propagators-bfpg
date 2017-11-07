@@ -1,6 +1,6 @@
-all: simples adds badds celsius upper contradiction
+all: simples adds badds celsius upper maybe doubleplus contradiction
 
-.PHONY: all clean simples adds badds celsius upper contradiction
+.PHONY: all clean simples adds badds celsius upper maybe doubeplus contradiction
 
 %.pdf : %.dot
 	dot $< -Tpdf -o $@
@@ -14,6 +14,10 @@ badds: badd1.pdf badd2.pdf badd3.pdf badd4.pdf
 celsius: celsius1.pdf celsius2.pdf celsius3.pdf celsius4.pdf celsius5.pdf celsius6.pdf celsius7.pdf celsius8.pdf celsius9.pdf celsius10.pdf celsius11.pdf celsius12.pdf celsius13.pdf celsius14.pdf celsius15.pdf celsius16.pdf
 
 upper: upper1.pdf upper2.pdf upper3.pdf
+
+maybe: maybe1.pdf maybe2.pdf maybe3.pdf maybe4.pdf
+
+doubleplus: doubleplus1.pdf doubleplus2.pdf doubleplus3.pdf doubleplus4.pdf doubleplus5.pdf doubleplus6.pdf doubleplus7.pdf doubleplus8.pdf
 
 contradiction: contradiction1.pdf contradiction2.pdf contradiction3.pdf contradiction4.pdf contradiction5.pdf contradiction6.pdf contradiction7.pdf contradiction8.pdf contradiction9.pdf
 

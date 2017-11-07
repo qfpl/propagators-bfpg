@@ -14,7 +14,7 @@ slides.pdf: $(SLIDES_TEX) diagrams
 	$(LATEX_SLIDES)
 	$(LATEX_SLIDES)
 
-diagrams:
+diagrams: diagrams/Makefile
 	$(MAKE) -C diagrams
 
 spell: $(SLIDES_TEX)
