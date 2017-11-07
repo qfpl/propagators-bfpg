@@ -50,11 +50,13 @@
 \newcommand{\pnl}{\pause \nl}
 
 \newcommand{\textslide}[1]{{
-\begin{frame}\begin{center}
+\begin{frame}
+\begin{center}
 
 #1
 
-\end{center}\end{frame}
+\end{center}
+\end{frame}
 }}
 
 \newcommand{\codeslide}[1]{{
@@ -366,7 +368,9 @@ A propagator network comprises
 \imageslide[0.65]{diagrams/celsius15.pdf}
 \imageslide[0.65]{diagrams/celsius16.pdf}
 
-\textslide{\Large{We can combine networks into larger networks!}}
+\textslide{
+\Large{We can combine networks into larger networks!}
+}
 
 \textslide{\Huge{?}}
 
@@ -458,15 +462,109 @@ instance Eq a => Monoid (Perhaps a) where
 \imageslide[0.6]{diagrams/doubleplus7.pdf}
 \imageslide[0.6]{diagrams/doubleplus8.pdf}
 
-\textslide{\LARGE{Will other monoids work?}}
+\textslide{
+\LARGE{Will other monoids work?}
+
+\pnl
+
+\Large{What about List?}
+}
+
+\imageslide[0.6]{diagrams/doubleplus9.pdf}
+\imageslide[0.6]{diagrams/doubleplus10.pdf}
+\imageslide[0.6]{diagrams/doubleplus11.pdf}
+\textslide{\Large{Looking good?}}
+\imageslide[0.6]{diagrams/doubleplus12.pdf}
+\imageslide[0.6]{diagrams/doubleplus13.pdf}
+\imageslide[0.6]{diagrams/doubleplus14.pdf}
+\imageslide[0.6]{diagrams/doubleplus11.pdf}
+\imageslide[0.6]{diagrams/doubleplus14.pdf}
+
+
+\begin{frame}[fragile]
+\begin{center}
+\Large{
+  We need commutativity!
+
+  \nl
+
+  $x \oplus y = y \oplus x$
+
+  \pnl
+
+  List append is not commutative!
+
+  {\tt {
+    [1,2,3] <> [4,5,6] == [1,2,3,4,5,6]
+  }}
+
+  {\tt {
+    [4,5,6] <> [1,2,3] == [4,5,6,1,2,3]
+  }}
+}
+\end{center}
+\end{frame}
+
+
+\textslide{\Large{
+We need a commutative monoid
+
+What about addition?
+
+\nl
+
+$x + y = y + x$
+}}
+
+\imageslide[0.6]{diagrams/doubleplus15.pdf}
+\imageslide[0.6]{diagrams/doubleplus16.pdf}
+\imageslide[0.6]{diagrams/doubleplus17.pdf}
+
+\imageslideleft{diagrams/badd5.pdf}
+\imageslideleft{diagrams/badd6.pdf}
+\imageslideleft{diagrams/badd7.pdf}
+\imageslideleft{diagrams/badd8.pdf}
+\imageslideleft{diagrams/badd9.pdf}
+\imageslideleft{diagrams/badd10.pdf}
+\imageslideleft{diagrams/badd11.pdf}
+
+
+\textslide{\Large{
+We need idempotence!
+
+\nl
+
+$x \oplus x = x$
+
+}}
+
+\textslide{\Large{
+
+We need an idempotent, commutative monoid.
+
+This structure is called a {\it join-semilattice}
+
+\nl
+
+Associativity
+
+$(x \vee y) \vee z = x \vee (y \vee z)$
+\nl
+
+Commutativity
+
+$x \vee y = y \vee x$
+\nl
+
+Idempotence
+
+$x \vee x = x$
+
+}}
 
 
 \textslide{
 {\LARGE Partial information that supports merging!}
-
-\pnl
-
-But is {\tt Monoid} enough?
 }
 
 

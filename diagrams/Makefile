@@ -9,7 +9,7 @@ simples: prop.pdf cell1.pdf cell2.pdf cell3.pdf always1.pdf always2.pdf always3.
 
 adds: add1.pdf add2.pdf add3.pdf add4.pdf
 
-badds: badd1.pdf badd2.pdf badd3.pdf badd4.pdf
+badds: badd1.pdf badd2.pdf badd3.pdf badd4.pdf badd5.pdf badd6.pdf badd7.pdf badd8.pdf badd9.pdf badd10.pdf badd11.pdf
 
 celsius: celsius1.pdf celsius2.pdf celsius3.pdf celsius4.pdf celsius5.pdf celsius6.pdf celsius7.pdf celsius8.pdf celsius9.pdf celsius10.pdf celsius11.pdf celsius12.pdf celsius13.pdf celsius14.pdf celsius15.pdf celsius16.pdf
 
@@ -17,7 +17,7 @@ upper: upper1.pdf upper2.pdf upper3.pdf
 
 maybe: maybe1.pdf maybe2.pdf maybe3.pdf maybe4.pdf
 
-doubleplus: doubleplus1.pdf doubleplus2.pdf doubleplus3.pdf doubleplus4.pdf doubleplus5.pdf doubleplus6.pdf doubleplus7.pdf doubleplus8.pdf
+doubleplus: doubleplus1.pdf doubleplus2.pdf doubleplus3.pdf doubleplus4.pdf doubleplus5.pdf doubleplus6.pdf doubleplus7.pdf doubleplus8.pdf doubleplus9.pdf doubleplus10.pdf doubleplus11.pdf doubleplus12.pdf doubleplus13.pdf doubleplus14.pdf doubleplus15.pdf doubleplus16.pdf doubleplus17.pdf
 
 contradiction: contradiction1.pdf contradiction2.pdf contradiction3.pdf contradiction4.pdf contradiction5.pdf contradiction6.pdf contradiction7.pdf contradiction8.pdf contradiction9.pdf
 
