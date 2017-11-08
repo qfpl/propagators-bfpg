@@ -27,6 +27,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
 \usepackage{gensymb}
+\usepackage{svg}
 
 \hypersetup{colorlinks=false}
 
@@ -174,7 +175,13 @@ More recently:
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
-\includegraphics[scale=0.6]{circuit.jpg}
+
+\begin{figure}
+\centering
+\def\svgwidth{\columnwidth}
+\input{circuit.pdf_tex}
+\end{figure}
+
 \end{column}
 \end{columns}
 
@@ -236,9 +243,16 @@ And then
 \begin{frame}
 The {\it propagator model} is a model of computation
 
-\nl
-
 We model computations as {\it propagator networks}
+
+\pnl
+
+Propagator networks:
+\begin{itemize}
+\item are extremely expressive
+\item lend themselves to parallel and distributed evaluation
+\item allow different strategies of problem-solving to seamlessly cooperate
+\end{itemize}
 \end{frame}
 
 
@@ -347,7 +361,7 @@ A propagator network comprises
 
 \begin{frame}
 \begin{center}
-{\LARGE Propagators let us express multidirectional relationships!}
+{\LARGE Propagators let us express multi-directional relationships!}
 \end{center}
 \end{frame}
 
@@ -386,6 +400,8 @@ What types are the values of the cells?
 \imageslide{diagrams/cell2.pdf}
 \imageslide{diagrams/cell1.pdf}
 
+
+\textslide{Cells store {\it information about a value}}
 
 \begin{frame}[fragile]
 \begin{haskellcode}

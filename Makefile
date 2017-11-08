@@ -9,13 +9,16 @@ LATEX_SLIDES = $(LATEX) $(SLIDES_TEX)
 
 slides: slides.pdf
 
-slides.pdf: $(SLIDES_TEX) diagrams
+slides.pdf: $(SLIDES_TEX) circuit.pdf_tex diagrams
 	$(LATEX_SLIDES)
 	$(LATEX_SLIDES)
 	$(LATEX_SLIDES)
 
 diagrams: diagrams/Makefile
 	$(MAKE) -C diagrams
+
+circuit.pdf_tex : circuit.svg
+	inkscape -D -z --file=circuit.svg --export-pdf=circuit.pdf --export-latex
 
 spell: $(SLIDES_TEX)
 	aspell check -len_GB $(SLIDES_TEX)
@@ -29,6 +32,6 @@ edit: $(SLIDES_TEX)
 o: open
 
 clean:
-	rm -rf $(SLIDES_PDF) *.loc *.toc *.log *.idx *.aux *.out *.nav *.snm *.vrb *.blg *.bbl
+	rm -rf $(SLIDES_PDF) *.loc *.toc *.log *.idx *.aux *.out *.nav *.snm *.vrb *.blg *.bbl *.pdf_tex
 	$(MAKE) -C diagrams clean
 
