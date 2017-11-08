@@ -32,17 +32,23 @@ cluster_' i extras d =
     graphAttrs (style invis : extras)
     d
 
-simpleProp :: DotGraph String
-simpleProp = digraph (Str (pack "Prop")) $ propagator "toUpper" "toUpper"
+simpleProp :: String -> DotGraph String
+simpleProp = digraph (Str (pack "Prop")) . propagator "prop"
+
+simpleCell :: String -> DotGraph String
+simpleCell = digraph (Str (pack "Cell")) . cell "cell"
 
 simpleCell1 :: DotGraph String
-simpleCell1 = digraph (Str (pack "Cell")) $ cell "cell" ""
+simpleCell1 = simpleCell ""
 
 simpleCell2 :: DotGraph String
-simpleCell2 = digraph (Str (pack "Cell")) $ cell "cell" "3"
+simpleCell2 = simpleCell "3"
 
 simpleCell3 :: DotGraph String
-simpleCell3 = digraph (Str (pack "Cell")) $ cell "cell" "'c'"
+simpleCell3 = simpleCell "'c'"
+
+simpleCell4 :: DotGraph String
+simpleCell4 = simpleCell "Contradiction"
 
 always :: String -> String -> DotGraph String
 always p c = digraph (Str (pack "always")) $ do
@@ -255,10 +261,11 @@ seventyFive = Just 75.2
 
 main :: IO ()
 main = do
-  dotFile "prop.dot" simpleProp
+  dotFile "prop.dot" (simpleProp "toUpper")
   dotFile "cell1.dot" simpleCell1
   dotFile "cell2.dot" simpleCell2
   dotFile "cell3.dot" simpleCell3
+  dotFile "cell4.dot" simpleCell4
   dotFile "add1.dot" (addition "" "" "")
   dotFile "add2.dot" (addition "3" "" "")
   dotFile "add3.dot" (addition "3" "4" "")
@@ -301,8 +308,9 @@ main = do
   dotFile "maybe2.dot" (addition "Just 3" "Nothing" "Nothing")
   dotFile "maybe3.dot" (addition "Just 3" "Just 4" "Nothing")
   dotFile "maybe4.dot" (addition "Just 3" "Just 4" "Just 7")
-  dotFile "doubleplus1.dot" (doubleplus "3" "4" "" "6" "6")
-  dotFile "doubleplus2.dot" (doubleplus "3" "4" "?" "6" "6")
+  dotFile "doubleplus0.dot" (doubleplus "3" "4" "" "6" "6")
+  dotFile "doubleplus1.dot" (doubleplus "3" "4" "?" "6" "6")
+  dotFile "doubleplus2.dot" (doubleplus "3" "4" "Contradiction" "6" "6")
   dotFile "doubleplus3.dot" (doubleplus "Just 3" "Just 4" "?" "Just 6" "Just 6")
   dotFile "doubleplus4.dot" (doubleplus "Known 3" "Known 4" "Unknown" "Known 6" "Known 6")
   dotFile "doubleplus5.dot" (doubleplus "Known 3" "Known 4" "Known 12 <> Unknown" "Known 6" "Known 6")

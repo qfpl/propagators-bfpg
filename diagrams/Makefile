@@ -5,7 +5,7 @@ all: simples adds mults badds celsius upper maybe doubleplus contradiction
 %.pdf : %.dot
 	dot $< -Tpdf -o $@
 
-simples: prop.pdf cell1.pdf cell2.pdf cell3.pdf always1.pdf always2.pdf always3.pdf always4.pdf
+simples: prop.pdf cell1.pdf cell2.pdf cell3.pdf cell4.pdf always1.pdf always2.pdf always3.pdf always4.pdf
 
 adds: add1.pdf add2.pdf add3.pdf add4.pdf
 
@@ -21,7 +21,7 @@ upper: upper1.pdf upper2.pdf upper3.pdf
 
 maybe: maybe1.pdf maybe2.pdf maybe3.pdf maybe4.pdf
 
-doubleplus: doubleplus1.pdf doubleplus2.pdf doubleplus3.pdf doubleplus4.pdf doubleplus5.pdf doubleplus6.pdf doubleplus7.pdf doubleplus8.pdf doubleplus9.pdf doubleplus10.pdf doubleplus11.pdf doubleplus12.pdf doubleplus13.pdf doubleplus14.pdf doubleplus15.pdf doubleplus16.pdf doubleplus17.pdf
+doubleplus: doubleplus0.pdf doubleplus1.pdf doubleplus2.pdf doubleplus3.pdf doubleplus4.pdf doubleplus5.pdf doubleplus6.pdf doubleplus7.pdf doubleplus8.pdf doubleplus9.pdf doubleplus10.pdf doubleplus11.pdf doubleplus12.pdf doubleplus13.pdf doubleplus14.pdf doubleplus15.pdf doubleplus16.pdf doubleplus17.pdf
 
 contradiction: contradiction1.pdf contradiction2.pdf contradiction3.pdf contradiction4.pdf contradiction5.pdf contradiction6.pdf contradiction7.pdf contradiction8.pdf contradiction9.pdf
 

@@ -50,6 +50,8 @@
 \newcommand{\nl}{\vspace{\baselineskip}}
 \newcommand{\pnl}{\pause \nl}
 
+\graphicspath{{diagrams/}}
+
 \newcommand{\textslide}[1]{{
 \begin{frame}
 \begin{center}
@@ -268,23 +270,23 @@ A propagator network comprises
 \end{frame}
 
 
-\imageslide{diagrams/cell1.pdf}
-\imageslide{diagrams/cell2.pdf}
-\imageslide{diagrams/prop.pdf}
+\imageslide{cell1.pdf}
+\imageslide{cell2.pdf}
+\imageslide{prop.pdf}
 
-%\imageslide{diagrams/always1.pdf}
-%\imageslide{diagrams/always2.pdf}
-%\imageslide{diagrams/always3.pdf}
-%\imageslide{diagrams/always4.pdf}
+%\imageslide{always1.pdf}
+%\imageslide{always2.pdf}
+%\imageslide{always3.pdf}
+%\imageslide{always4.pdf}
 
-\imageslide{diagrams/upper1.pdf}
-\imageslide{diagrams/upper2.pdf}
-\imageslide{diagrams/upper3.pdf}
+\imageslide{upper1.pdf}
+\imageslide{upper2.pdf}
+\imageslide{upper3.pdf}
 
-\imageslide{diagrams/add1.pdf}
-\imageslide{diagrams/add2.pdf}
-\imageslide{diagrams/add3.pdf}
-\imageslide{diagrams/add4.pdf}
+\imageslide{add1.pdf}
+\imageslide{add2.pdf}
+\imageslide{add3.pdf}
+\imageslide{add4.pdf}
 
 
 %%%%% bidirectionality
@@ -353,10 +355,10 @@ A propagator network comprises
 \end{frame}
 
 
-\imageslide{diagrams/badd1.pdf}
-\imageslide{diagrams/badd2.pdf}
-\imageslide{diagrams/badd3.pdf}
-\imageslide{diagrams/badd4.pdf}
+\imageslide{badd1.pdf}
+\imageslide{badd2.pdf}
+\imageslide{badd3.pdf}
+\imageslide{badd4.pdf}
 
 
 \begin{frame}
@@ -365,22 +367,22 @@ A propagator network comprises
 \end{center}
 \end{frame}
 
-\imagetextslide[0.8]{diagrams/celsius1.pdf}{\ctof}
-\imagetextslide[0.8]{diagrams/celsius2.pdf}{\ctof}
-\imagetextslide[0.8]{diagrams/celsius3.pdf}{\ctof}
-\imagetextslide[0.8]{diagrams/celsius4.pdf}{\ctof}
-\imagetextslide[0.65]{diagrams/celsius5.pdf}{\ctof \\ \nl \ftoc}
-\imagetextslide[0.65]{diagrams/celsius6.pdf}{\ctof \\ \nl \ftoc}
-\imagetextslide[0.65]{diagrams/celsius7.pdf}{\ctof \\ \nl \ftoc}
-\imagetextslide[0.65]{diagrams/celsius8.pdf}{\ctof \\ \nl \ftoc}
-\imagetextslide[0.65]{diagrams/celsius9.pdf}{\ctof \\ \nl \ftoc}
-\imagetextslide[0.65]{diagrams/celsius10.pdf}{\ctof \\ \nl \ftoc}
-\imagetextslide[0.65]{diagrams/celsius11.pdf}{\ctof \\ \nl \ftoc}
-\imageslide[0.65]{diagrams/celsius12.pdf}
-\imageslide[0.65]{diagrams/celsius13.pdf}
-\imageslide[0.65]{diagrams/celsius14.pdf}
-\imageslide[0.65]{diagrams/celsius15.pdf}
-\imageslide[0.65]{diagrams/celsius16.pdf}
+\imagetextslide[0.8]{celsius1.pdf}{\ctof}
+\imagetextslide[0.8]{celsius2.pdf}{\ctof}
+\imagetextslide[0.8]{celsius3.pdf}{\ctof}
+\imagetextslide[0.8]{celsius4.pdf}{\ctof}
+\imagetextslide[0.65]{celsius5.pdf}{\ctof \\ \nl \ftoc}
+\imagetextslide[0.65]{celsius6.pdf}{\ctof \\ \nl \ftoc}
+\imagetextslide[0.65]{celsius7.pdf}{\ctof \\ \nl \ftoc}
+\imagetextslide[0.65]{celsius8.pdf}{\ctof \\ \nl \ftoc}
+\imagetextslide[0.65]{celsius9.pdf}{\ctof \\ \nl \ftoc}
+\imagetextslide[0.65]{celsius10.pdf}{\ctof \\ \nl \ftoc}
+\imagetextslide[0.65]{celsius11.pdf}{\ctof \\ \nl \ftoc}
+\imageslide[0.65]{celsius12.pdf}
+\imageslide[0.65]{celsius13.pdf}
+\imageslide[0.65]{celsius14.pdf}
+\imageslide[0.65]{celsius15.pdf}
+\imageslide[0.65]{celsius16.pdf}
 
 \textslide{
 \Large{We can combine networks into larger networks!}
@@ -388,7 +390,13 @@ A propagator network comprises
 
 \textslide{\Huge{?}}
 
+
 %%%%% partiality
+
+
+\imageslide[0.6]{doubleplus0.pdf}
+\imageslide[0.6]{doubleplus1.pdf}
+\imageslide[0.6]{doubleplus2.pdf}
 
 
 \textslide{{\LARGE
@@ -396,48 +404,43 @@ What types are the values of the cells?
 }}
 
 
-\imageslide{diagrams/cell3.pdf}
-\imageslide{diagrams/cell2.pdf}
-\imageslide{diagrams/cell1.pdf}
+\imageslide{cell1.pdf}
+\imageslide{cell2.pdf}
+\imageslide{cell3.pdf}
+\imageslide{cell4.pdf}
 
 
-\textslide{Cells store {\it information about a value}}
+%\begin{frame}[fragile]
+%\begin{haskellcode}
+%data Maybe a = Nothing | Just a
+%\end{haskellcode}
+%\end{frame}
+
+
+%\imageslide{maybe1.pdf}
+%\imageslide{maybe2.pdf}
+%\imageslide{maybe3.pdf}
+%\imageslide{maybe4.pdf}
+
+%\imageslide[0.6]{doubleplus3.pdf}
+
+%\imageslideleft{always1.pdf}
+
+%\imageslideleft{always2.pdf}
+%\imageslideleft{always3.pdf}
+%\imageslideleft{always4.pdf}
+%\imageslideleft{contradiction1.pdf}
+%\imageslideleft{contradiction2.pdf}
+%\imageslideleft{contradiction3.pdf}
+
 
 \begin{frame}[fragile]
 \begin{haskellcode}
-data Maybe a = Nothing | Just a
+data Perhaps a = Unknown | Known a | Contradiction
 \end{haskellcode}
 \end{frame}
 
-
-\imageslide{diagrams/maybe1.pdf}
-\imageslide{diagrams/maybe2.pdf}
-\imageslide{diagrams/maybe3.pdf}
-\imageslide{diagrams/maybe4.pdf}
-
-\imageslide[0.6]{diagrams/doubleplus3.pdf}
-
-\textslide{{\Huge \bf
-:(
-
-\nl
-}
-
-\LARGE{Contradiction}
-
-}
-
-
-%\imageslide[0.6]{diagrams/doubleplus3.pdf}
-
-%\imageslideleft{diagrams/always1.pdf}
-
-%\imageslideleft{diagrams/always2.pdf}
-%\imageslideleft{diagrams/always3.pdf}
-%\imageslideleft{diagrams/always4.pdf}
-%\imageslideleft{diagrams/contradiction1.pdf}
-%\imageslideleft{diagrams/contradiction2.pdf}
-%\imageslideleft{diagrams/contradiction3.pdf}
+\textslide{Cells accumulate {\it information about a value}}
 
 \begin{frame}[fragile]
 
@@ -445,7 +448,7 @@ data Maybe a = Nothing | Just a
 data Perhaps a = Unknown | Known a | Contradiction
 \end{haskellcode}
 
-\pnl
+\nl
 
 \begin{haskellcode}
 instance Eq a => Monoid (Perhaps a) where
@@ -465,36 +468,41 @@ instance Eq a => Monoid (Perhaps a) where
 \end{frame}
 
 
-%\imageslideleft{diagrams/contradiction4.pdf}
-%\imageslideleft{diagrams/contradiction5.pdf}
-%\imageslideleft{diagrams/contradiction6.pdf}
-%\imageslideleft{diagrams/contradiction7.pdf}
-%\imageslideleft{diagrams/contradiction8.pdf}
-%\imageslideleft{diagrams/contradiction9.pdf}
+%\imageslideleft{contradiction4.pdf}
+%\imageslideleft{contradiction5.pdf}
+%\imageslideleft{contradiction6.pdf}
+%\imageslideleft{contradiction7.pdf}
+%\imageslideleft{contradiction8.pdf}
+%\imageslideleft{contradiction9.pdf}
 
-\imageslide[0.6]{diagrams/doubleplus4.pdf}
-\imageslide[0.6]{diagrams/doubleplus5.pdf}
-\imageslide[0.6]{diagrams/doubleplus6.pdf}
-\imageslide[0.6]{diagrams/doubleplus7.pdf}
-\imageslide[0.6]{diagrams/doubleplus8.pdf}
+\imageslide[0.6]{doubleplus4.pdf}
+\imageslide[0.6]{doubleplus5.pdf}
+\imageslide[0.6]{doubleplus6.pdf}
+\imageslide[0.6]{doubleplus7.pdf}
+\imageslide[0.6]{doubleplus8.pdf}
+
 
 \textslide{
-\LARGE{Will other monoids work?}
+\LARGE{
+Is this the only type propagator cells can contain?
+
+Will other monoids work?
+}
 
 \pnl
 
 \Large{What about List?}
 }
 
-\imageslide[0.6]{diagrams/doubleplus9.pdf}
-\imageslide[0.6]{diagrams/doubleplus10.pdf}
-\imageslide[0.6]{diagrams/doubleplus11.pdf}
+\imageslide[0.6]{doubleplus9.pdf}
+\imageslide[0.6]{doubleplus10.pdf}
+\imageslide[0.6]{doubleplus11.pdf}
 \textslide{\Large{Looking good?}}
-\imageslide[0.6]{diagrams/doubleplus12.pdf}
-\imageslide[0.6]{diagrams/doubleplus13.pdf}
-\imageslide[0.6]{diagrams/doubleplus14.pdf}
-\imageslide[0.6]{diagrams/doubleplus11.pdf}
-\imageslide[0.6]{diagrams/doubleplus14.pdf}
+\imageslide[0.6]{doubleplus12.pdf}
+\imageslide[0.6]{doubleplus13.pdf}
+\imageslide[0.6]{doubleplus14.pdf}
+\imageslide[0.6]{doubleplus11.pdf}
+\imageslide[0.6]{doubleplus14.pdf}
 
 
 \begin{frame}[fragile]
@@ -532,17 +540,18 @@ What about addition?
 $x + y = y + x$
 }}
 
-\imageslide[0.6]{diagrams/doubleplus15.pdf}
-\imageslide[0.6]{diagrams/doubleplus16.pdf}
-\imageslide[0.6]{diagrams/doubleplus17.pdf}
+\imageslide[0.6]{doubleplus15.pdf}
+\imageslide[0.6]{doubleplus16.pdf}
+\imageslide[0.6]{doubleplus17.pdf}
 
-\imageslideleft{diagrams/badd5.pdf}
-\imageslideleft{diagrams/badd6.pdf}
-\imageslideleft{diagrams/badd7.pdf}
-\imageslideleft{diagrams/badd8.pdf}
-\imageslideleft{diagrams/badd9.pdf}
-\imageslideleft{diagrams/badd10.pdf}
-\imageslideleft{diagrams/badd11.pdf}
+%% No good`
+%\imageslide{badd5.pdf}
+%\imageslide{badd6.pdf}
+%\imageslide{badd7.pdf}
+%\imageslide{badd8.pdf}
+%\imageslide{badd9.pdf}
+%\imageslide{badd10.pdf}
+%\imageslide{badd11.pdf}
 
 
 \textslide{\Large{
