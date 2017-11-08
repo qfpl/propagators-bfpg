@@ -1,0 +1,35 @@
+digraph "bidirectional *÷" {
+    subgraph cluster_0 {
+        graph [style=invis];
+        graph [style=invis];
+        a [label=""];
+        b [label=""];
+    }
+    subgraph cluster_1 {
+        graph [style=invis];
+        graph [style=invis];
+        min1 [label=÷,shape=square];
+        plus [label="*",shape=square];
+        min2 [label=÷,shape=square];
+    }
+    subgraph cluster_2 {
+        graph [style=invis];
+        graph [style=invis];
+        c [label=0];
+    }
+    a -> plus [weight=50];
+    a -> min1 [weight=50];
+    b -> plus [weight=50];
+    b -> min2 [weight=50];
+    c -> min1;
+    c -> min2;
+    min1 -> b [weight=50];
+    min2 -> a [weight=50];
+    plus -> c [weight=50];
+    a -> c [style=invis
+           ,weight=0
+           ,minlen=2];
+    b -> c [style=invis
+           ,weight=0
+           ,minlen=2];
+}

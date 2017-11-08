@@ -60,27 +60,38 @@ always2 p c = digraph (Str (pack "always")) $ do
   "p" --> "c1"
   "p" --> "c2"
 
-addition :: String -> String -> String -> DotGraph String
-addition a b c = digraph (Str (pack "Addition")) $ do
+tri :: String -> String -> String -> String -> DotGraph String
+tri symbol a b c = digraph (Str (pack ("tri " ++ symbol))) $ do
   l2r
   cell "a" a
   cell "b" b
   cell "c" c
-  propagator "plus" "+"
+  propagator "symbol" symbol
 
-  "a" --> "plus"
-  "b" --> "plus"
-  "plus" --> "c"
+  "a" --> "symbol"
+  "b" --> "symbol"
+  "symbol" --> "c"
 
-bidirectionalAddition :: String -> String -> String -> DotGraph String
-bidirectionalAddition a b c = digraph (Str (pack "bidirectional-addition")) $ do
-  l2r
-  bidirectionalAddition_ a b c
+addition :: String -> String -> String -> DotGraph String
+addition = tri "+"
+
+mult :: String -> String -> String -> DotGraph String
+mult = tri "×"
+
+bimult :: String -> String -> String -> DotGraph String
+bimult = bidirectional "*" "÷"
+
+bidirectional :: String -> String -> String -> String -> String -> DotGraph String
+bidirectional symbol1 symbol2 a b c = digraph (Str (pack ("bidirectional " ++ symbol1 ++ symbol2))) $ do
+  bidirectional_ symbol1 symbol2 a b c
   invisEdge' "a" "c" [Weight (Int 0), MinLen 2]
   invisEdge' "b" "c" [Weight (Int 0), MinLen 2]
 
-bidirectionalAddition_ :: String -> String -> String -> DotM String ()
-bidirectionalAddition_ a b c = do
+bidirectionalAddition :: String -> String -> String -> DotGraph String
+bidirectionalAddition = bidirectional "+" "-"
+
+bidirectional_ :: String -> String -> String -> String -> String -> DotM String ()
+bidirectional_ symbol1 symbol2 a b c = do
   cluster_ 0 $ do
     graphAttrs [style invis]
     cell "a" a
@@ -88,9 +99,9 @@ bidirectionalAddition_ a b c = do
 
   cluster_ 1 $ do
     graphAttrs [style invis]
-    propagator "min1" "-"
-    propagator "plus" "+"
-    propagator "min2" "-"
+    propagator "min1" symbol2
+    propagator "plus" symbol1
+    propagator "min2" symbol2
   
   cluster_ 2 $ do
     graphAttrs [style invis]
@@ -275,6 +286,13 @@ main = do
   dotFile "celsius14.dot" (celsiusAdd Nothing (Just 3) Nothing fortyThree seventyFive)
   dotFile "celsius15.dot" (celsiusAdd Nothing (Just 3) twentyFour fortyThree seventyFive)
   dotFile "celsius16.dot" (celsiusAdd ((subtract 3) <$> twentyFour) (Just 3) twentyFour fortyThree seventyFive)
+  dotFile "mult1.dot" (mult "" "" "")
+  dotFile "mult2.dot" (mult "5" "" "")
+  dotFile "mult3.dot" (mult "5" "6" "")
+  dotFile "mult4.dot" (mult "5" "6" "30")
+  dotFile "bimult1.dot" (bimult "" "" "")
+  dotFile "bimult1.dot" (bimult "" "" "0")
+  dotFile "bimult2.dot" (bimult "BOOM" "BOOM" "0")
   dotFile "always1.dot" (always "always 3" "Nothing")
   dotFile "always2.dot" (always "always 3" "Just 3")
   dotFile "always3.dot" (always2 "always 3" "Nothing")
