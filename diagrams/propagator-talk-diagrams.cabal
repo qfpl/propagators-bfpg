@@ -17,14 +17,10 @@ cabal-version:       >=1.10
 
 executable propagator-talk-diagrams
   main-is:             Main.hs
-  other-modules:       Diag, Dot
+  other-modules:       Dot
   -- other-extensions:    
   build-depends:       base >=4.8 && <4.11
                        , containers
-                       , diagrams == 1.4.*
-                       , diagrams-core == 1.4.*
-                       , diagrams-svg== 1.4.*
-                       , diagrams-lib == 1.4.*
                        , graphviz
                        , fgl
                        , text
