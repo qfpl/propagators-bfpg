@@ -258,3 +258,4 @@ contradiction a b c = digraph (Str (pack "contradiction")) $ do
 
 dotFile :: String -> DotGraph String -> IO ()
 dotFile fn = writeFile fn . unpack . printDotGraph
+

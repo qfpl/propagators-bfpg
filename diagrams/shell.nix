@@ -4,8 +4,7 @@ let
 
   inherit (nixpkgs) pkgs;
 
-  f = { mkDerivation, base, containers, diagrams, diagrams-core
-      , diagrams-lib, diagrams-svg, fgl, graphviz, stdenv, text
+  f = { mkDerivation, base, containers, fgl, graphviz, stdenv, text
       }:
       mkDerivation {
         pname = "propagator-talk-diagrams";
@@ -13,10 +12,7 @@ let
         src = ./.;
         isLibrary = false;
         isExecutable = true;
-        executableHaskellDepends = [
-          base containers diagrams diagrams-core diagrams-lib diagrams-svg
-          fgl graphviz text
-        ];
+        executableHaskellDepends = [ base containers fgl graphviz text ];
         license = stdenv.lib.licenses.bsd3;
       };
 
