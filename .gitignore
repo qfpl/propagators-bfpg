@@ -14,7 +14,7 @@
 *.class
 *.o
 *.hi
-/_minted-slides/
+/_minted-*/
 *-converted-to.pdf
 target/
 dist/
