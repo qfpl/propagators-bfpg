@@ -1,3 +1,7 @@
+{-# LANGUAGE NoMonomorphismRestriction #-}
+{-# LANGUAGE FlexibleContexts          #-}
+{-# LANGUAGE TypeFamilies              #-}
+
 module Main where
 
 import Diag
@@ -10,6 +14,18 @@ seventyFive = Just 75.2
 
 main :: IO ()
 main = do
+  dotFiles
+  diagrams
+
+diagrams :: IO ()
+diagrams = do
+  renderDiagram "screen1.svg" (Just 400) (Just 400) screenTv
+  renderDiagram "screen2.svg" (Just 400) (Just 400) screenHyp
+  renderDiagram "screen3.svg" (Just 400) (Just 400) screenWidth
+  renderDiagram "screen4.svg" (Just 400) (Just 400) screenVariables
+
+dotFiles :: IO ()
+dotFiles = do
   dotFile "prop.dot" (simpleProp "toUpper")
   dotFile "cell1.dot" simpleCell1
   dotFile "cell2.dot" simpleCell2

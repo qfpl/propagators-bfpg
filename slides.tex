@@ -28,6 +28,7 @@
 \usepackage{textcomp}
 \usepackage{gensymb}
 \usepackage{svg}
+\usepackage{pdfpages}
 
 \hypersetup{colorlinks=false}
 
@@ -89,6 +90,14 @@
 
 \includegraphics[scale=#1]{#2}
 \end{center}\end{frame}
+}}
+
+\newcommand{\svgslide}[1]{{
+\begin{frame}
+\begin{center}
+\includesvg{diagrams/#1}
+\end{center}
+\end{frame}
 }}
 
 \newcommand{\ctof}{{
@@ -416,10 +425,17 @@ A propagator network comprises
 
 
 \begin{frame}
-
+TODO more interval stuff here
 \end{frame}
 
 
+\imageslide{manual/screen1.pdf}
+\imageslide{manual/screen2.pdf}
+\imageslide{manual/screen3.pdf}
+\imageslide{manual/screen4.pdf}
+
+
+% Set stuff
 \begin{frame}
 \begin{center}
 \Huge $\{True,\ False\}$

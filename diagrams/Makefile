@@ -2,6 +2,13 @@ all: simples adds mults badds celsius upper maybe doubleplus contradiction
 
 .PHONY: all clean simples adds mults badds celsius upper maybe doubeplus contradiction
 
+RUN_CABAL = nix-shell --command "cabal run"
+
+HASKELL_SRCS = shell.nix src/Main.hs src/Diag.hs src/Dot.hs
+
+shell.nix: propagator-talk-diagrams.cabal
+	cabal2nix --shell . > shell.nix
+
 %.pdf : %.dot
 	dot $< -Tpdf -o $@
 
@@ -25,9 +32,9 @@ doubleplus: doubleplus0.pdf doubleplus1.pdf doubleplus2.pdf doubleplus3.pdf doub
 
 contradiction: contradiction1.pdf contradiction2.pdf contradiction3.pdf contradiction4.pdf contradiction5.pdf contradiction6.pdf contradiction7.pdf contradiction8.pdf contradiction9.pdf
 
-%.dot: src/Main.hs
-	nix-shell --command "cabal run"
+%.dot: $(HASKELL_SRCS)
+	$(RUN_CABAL)
 
 clean:
-	rm -rf *.pdf *.dot
+	rm -rf *.pdf *.dot *.pdf_tex *.svg
 
