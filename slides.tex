@@ -283,11 +283,6 @@ A propagator network comprises
 \imageslide{cell2.pdf}
 \imageslide{prop.pdf}
 
-%\imageslide{always1.pdf}
-%\imageslide{always2.pdf}
-%\imageslide{always3.pdf}
-%\imageslide{always4.pdf}
-
 \imageslide{upper1.pdf}
 \imageslide{upper2.pdf}
 \imageslide{upper3.pdf}
@@ -376,22 +371,7 @@ A propagator network comprises
 \end{center}
 \end{frame}
 
-\imagetextslide[0.8]{celsius1.pdf}{\ctof}
-\imagetextslide[0.8]{celsius2.pdf}{\ctof}
-\imagetextslide[0.8]{celsius3.pdf}{\ctof}
-\imagetextslide[0.8]{celsius4.pdf}{\ctof}
-\imagetextslide[0.65]{celsius5.pdf}{\ctof \\ \nl \ftoc}
-\imagetextslide[0.65]{celsius6.pdf}{\ctof \\ \nl \ftoc}
-\imagetextslide[0.65]{celsius7.pdf}{\ctof \\ \nl \ftoc}
-\imagetextslide[0.65]{celsius8.pdf}{\ctof \\ \nl \ftoc}
-\imagetextslide[0.65]{celsius9.pdf}{\ctof \\ \nl \ftoc}
-\imagetextslide[0.65]{celsius10.pdf}{\ctof \\ \nl \ftoc}
-\imagetextslide[0.65]{celsius11.pdf}{\ctof \\ \nl \ftoc}
-\imageslide[0.65]{celsius12.pdf}
-\imageslide[0.65]{celsius13.pdf}
-\imageslide[0.65]{celsius14.pdf}
-\imageslide[0.65]{celsius15.pdf}
-\imageslide[0.65]{celsius16.pdf}
+\input{celsius.tex}
 
 \textslide{
 \Large{We can combine networks into larger networks!}
@@ -405,45 +385,13 @@ A propagator network comprises
 
 \textslide{\Large{Cells {\it accumulate information} about a value}}
 
+\input{sudoku.tex}
 
-\begin{frame}
-\begin{center}
-\Huge $[1,5]$
-\end{center}
-\end{frame}
+\input{set.tex}
 
+\input{interval.tex}
 
-\begin{frame}
-\begin{center}
-\Huge $[1, 5] \cup [2, 7] = [2,5]$
-
-\pnl
-
-\Huge $[2,5] + [9,10] = [11,15]$
-\end{center}
-\end{frame}
-
-
-\imageslide{intervaladd1.pdf}
-\imageslide{intervaladd2.pdf}
-
-\imageslide{manual/screen1.pdf}
-\imageslide{manual/screen2.pdf}
-\imageslide{manual/screen3.pdf}
-\imageslide{manual/screen4.pdf}
-
-
-% Set stuff
-\begin{frame}
-\begin{center}
-\Huge $\{True,\ False\}$
-\end{center}
-\end{frame}
-
-
-\begin{frame}
-TODO set intersection examples
-\end{frame}
+%\input{screen.tex}
 
 
 \imageslide[0.6]{doubleplus0.pdf}
@@ -594,7 +542,7 @@ $x + y = y + x$
 \imageslide[0.6]{doubleplus16.pdf}
 \imageslide[0.6]{doubleplus17.pdf}
 
-%% No good`
+%% No good
 %\imageslide{badd5.pdf}
 %\imageslide{badd6.pdf}
 %\imageslide{badd7.pdf}

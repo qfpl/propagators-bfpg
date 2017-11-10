@@ -14,7 +14,7 @@ SPELL = aspell check -len_GB
 
 slides: slides.pdf extra.pdf
 
-slides.pdf: $(SLIDES_TEX) circuit.pdf_tex diagrams
+slides.pdf: $(SLIDES_TEX) screen.tex celsius.tex circuit.pdf_tex diagrams
 	$(LATEX_SLIDES)
 	$(LATEX_SLIDES)
 	$(LATEX_SLIDES)

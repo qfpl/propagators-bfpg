@@ -1,4 +1,5 @@
 digraph "bidirectional *÷" {
+    graph [rankdir=LR];
     subgraph cluster_0 {
         graph [style=invis];
         graph [style=invis];

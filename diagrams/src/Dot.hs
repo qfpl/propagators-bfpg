@@ -103,6 +103,8 @@ bidirectionalAddition = bidirectional "+" "-"
 
 bidirectional_ :: String -> String -> String -> String -> String -> DotM String ()
 bidirectional_ symbol1 symbol2 a b c = do
+  l2r
+
   cluster_ 0 $ do
     graphAttrs [style invis]
     cell "a" a
