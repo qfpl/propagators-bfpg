@@ -108,4 +108,6 @@ main = do
   dotFile "contradiction7.dot" (contradiction "Known 3" "Known 3 <> Known 4 <> Unknown" "Known 4")
   dotFile "contradiction8.dot" (contradiction "Known 3" "Known 3 <> Known 4" "Known 4")
   dotFile "contradiction9.dot" (contradiction "Known 3" "       Contradiction       " "Known 4")
+
+  dotFile "powerset.dot" powerset
  

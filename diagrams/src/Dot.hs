@@ -6,6 +6,12 @@ import Data.GraphViz.Types
 import Data.GraphViz.Types.Monadic
 import Data.GraphViz.Types.Generalised
 import Data.Text.Lazy
+import Data.Foldable (traverse_)
+
+digraph_ :: String -> DotM n a -> DotGraph n
+digraph_ s dotn = digraph (Str (pack s)) $ do
+  graphAttrs [bgColor Transparent]
+  dotn
 
 propagator :: Labellable a => n -> a -> Dot n
 propagator name val = node name [toLabel val, shape Square]
@@ -38,10 +44,10 @@ cluster_' i extras d =
     d
 
 simpleProp :: String -> DotGraph String
-simpleProp = digraph (Str (pack "Prop")) . propagator "prop"
+simpleProp = digraph_ "Prop" . propagator "prop"
 
 simpleCell :: String -> DotGraph String
-simpleCell = digraph (Str (pack "Cell")) . cell "cell"
+simpleCell = digraph_ "Cell" . cell "cell"
 
 simpleCell1 :: DotGraph String
 simpleCell1 = simpleCell ""
@@ -56,14 +62,14 @@ simpleCell4 :: DotGraph String
 simpleCell4 = simpleCell "Contradiction"
 
 always :: String -> String -> DotGraph String
-always p c = digraph (Str (pack "always")) $ do
+always p c = digraph_ "always" $ do
   l2r
   propagator "p" p
   cell "c" c
   "p" --> "c"
 
 always2 :: String -> String -> DotGraph String
-always2 p c = digraph (Str (pack "always")) $ do
+always2 p c = digraph_ "always" $ do
   l2r
   propagator "p" p
   cell "c1" c
@@ -72,7 +78,7 @@ always2 p c = digraph (Str (pack "always")) $ do
   "p" --> "c2"
 
 tri :: String -> String -> String -> String -> DotGraph String
-tri symbol a b c = digraph (Str (pack ("tri " ++ symbol))) $ do
+tri symbol a b c = digraph_ ("tri " ++ symbol) $ do
   l2r
   cell "a" a
   cell "b" b
@@ -93,7 +99,7 @@ bimult :: String -> String -> String -> DotGraph String
 bimult = bidirectional "*" "÷"
 
 bidirectional :: String -> String -> String -> String -> String -> DotGraph String
-bidirectional symbol1 symbol2 a b c = digraph (Str (pack ("bidirectional " ++ symbol1 ++ symbol2))) $ do
+bidirectional symbol1 symbol2 a b c = digraph_ ("bidirectional " ++ symbol1 ++ symbol2) $ do
   bidirectional_ symbol1 symbol2 a b c
   invisEdge' "a" "c" [Weight (Int 0), MinLen 2]
   invisEdge' "b" "c" [Weight (Int 0), MinLen 2]
@@ -165,12 +171,12 @@ celsius_ c m f = do
   edge "f" "f" [xLabel "F", penWidth 0, Dir NoDir]
 
 celsius :: Maybe Double -> Maybe Double -> Maybe Double -> DotGraph String
-celsius c m f = digraph (Str (pack "c2f")) $ do
+celsius c m f = digraph_ "c2f" $ do
   l2r
   celsius_ c m f
 
 celsiusBi :: Maybe Double -> Maybe Double -> Maybe Double -> DotGraph String
-celsiusBi c m f = digraph (Str (pack "c2f")) $ do
+celsiusBi c m f = digraph_ "c2f" $ do
   l2r
   celsiusBi_ c m f
 
@@ -188,7 +194,7 @@ celsiusBi_ c m f = do
   "div" --> "c"
 
 celsiusAdd :: Maybe Double -> Maybe Double -> Maybe Double -> Maybe Double -> Maybe Double -> DotGraph String
-celsiusAdd x y c m f = digraph (Str (pack "celsiusAdd")) $ do
+celsiusAdd x y c m f = digraph_ "celsiusAdd" $ do
   l2r
 
   celsiusBi_ c m f
@@ -216,7 +222,7 @@ celsiusAdd x y c m f = digraph (Str (pack "celsiusAdd")) $ do
   "plus2" --> "c"
 
 doubleplus :: String -> String -> String -> String -> String -> DotGraph String
-doubleplus i1 i2 o j1 j2 = digraph (Str (pack "doubleplus")) $ do
+doubleplus i1 i2 o j1 j2 = digraph_ "doubleplus" $ do
   cell "i1" i1
   cell "i2" i2
   propagator "plus1" "+"
@@ -233,7 +239,7 @@ doubleplus i1 i2 o j1 j2 = digraph (Str (pack "doubleplus")) $ do
   "plus2" <-- "j2"
 
 solo :: String -> String -> String -> DotGraph String
-solo i p o = digraph (Str (pack "toUpper")) $ do
+solo i p o = digraph_ "toUpper" $ do
   l2r
   cell "in" i
   propagator "prop" p
@@ -243,7 +249,7 @@ solo i p o = digraph (Str (pack "toUpper")) $ do
   "prop" --> "out"
 
 contradiction :: String -> String -> String -> DotGraph String
-contradiction a b c = digraph (Str (pack "contradiction")) $ do
+contradiction a b c = digraph_ "contradiction" $ do
   l2r
 
   propagator "a3" "always 3"
@@ -257,6 +263,41 @@ contradiction a b c = digraph (Str (pack "contradiction")) $ do
   "a3" --> "b"
   "a4" --> "b"
   "a4" --> "c"
+
+
+powerset :: DotGraph String
+powerset = digraph_ "powerset" $ do
+  graphAttrs [bgColor Transparent]
+  let n name val = node name [toLabel val, shape PlainText]
+  let a s t = edge s t [Dir NoDir]
+  n "empty" "{}"
+  n "a" "{1}"
+  n "b" "{2}"
+  n "c" "{3}"
+  n "d" "{4}"
+  n "ab" "{1,2}"
+  n "ac" "{1,3}"
+  n "ad" "{1,4}"
+  n "bc" "{2,3}"
+  n "bd" "{2,4}"
+  n "cd" "{3,4}"
+  n "abc" "{1,2,3}"
+  n "acd" "{1,3,4}"
+  n "abd" "{1,2,4}"
+  n "bcd" "{2,3,4}"
+  n "abcd" "{1,2,3,4}"
+  traverse_ (a "empty") ["a", "b", "c", "d"]
+  traverse_ (a "a") ["ab", "ac", "ad"]
+  traverse_ (a "b") ["ab", "bc", "bd"]
+  traverse_ (a "c") ["ac", "bc", "cd"]
+  traverse_ (a "d") ["ad", "bd", "cd"]
+  traverse_ (a "ab") ["abc", "abd"]
+  traverse_ (a "ac") ["abc", "acd"]
+  traverse_ (a "ad") ["abd", "acd"]
+  traverse_ (a "bc") ["abc", "bcd"]
+  traverse_ (a "bd") ["abd", "bcd"]
+  traverse_ (a "cd") ["acd", "bcd"]
+  traverse (flip a "abcd") ["abc", "bcd", "acd", "abd"]
 
 dotFile :: String -> DotGraph String -> IO ()
 dotFile fn = writeFile fn . unpack . printDotGraph

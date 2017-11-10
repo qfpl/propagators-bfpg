@@ -1,0 +1,64 @@
+digraph powerset {
+    graph [bgcolor=transparent];
+    graph [bgcolor=transparent];
+    empty [label="{}"
+          ,shape=plaintext];
+    a [label="{1}",shape=plaintext];
+    b [label="{2}",shape=plaintext];
+    c [label="{3}",shape=plaintext];
+    d [label="{4}",shape=plaintext];
+    ab [label="{1,2}"
+       ,shape=plaintext];
+    ac [label="{1,3}"
+       ,shape=plaintext];
+    ad [label="{1,4}"
+       ,shape=plaintext];
+    bc [label="{2,3}"
+       ,shape=plaintext];
+    bd [label="{2,4}"
+       ,shape=plaintext];
+    cd [label="{3,4}"
+       ,shape=plaintext];
+    abc [label="{1,2,3}"
+        ,shape=plaintext];
+    acd [label="{1,3,4}"
+        ,shape=plaintext];
+    abd [label="{1,2,4}"
+        ,shape=plaintext];
+    bcd [label="{2,3,4}"
+        ,shape=plaintext];
+    abcd [label="{1,2,3,4}"
+         ,shape=plaintext];
+    empty -> a [dir=none];
+    empty -> b [dir=none];
+    empty -> c [dir=none];
+    empty -> d [dir=none];
+    a -> ab [dir=none];
+    a -> ac [dir=none];
+    a -> ad [dir=none];
+    b -> ab [dir=none];
+    b -> bc [dir=none];
+    b -> bd [dir=none];
+    c -> ac [dir=none];
+    c -> bc [dir=none];
+    c -> cd [dir=none];
+    d -> ad [dir=none];
+    d -> bd [dir=none];
+    d -> cd [dir=none];
+    ab -> abc [dir=none];
+    ab -> abd [dir=none];
+    ac -> abc [dir=none];
+    ac -> acd [dir=none];
+    ad -> abd [dir=none];
+    ad -> acd [dir=none];
+    bc -> abc [dir=none];
+    bc -> bcd [dir=none];
+    bd -> abd [dir=none];
+    bd -> bcd [dir=none];
+    cd -> acd [dir=none];
+    cd -> bcd [dir=none];
+    abc -> abcd [dir=none];
+    bcd -> abcd [dir=none];
+    acd -> abcd [dir=none];
+    abd -> abcd [dir=none];
+}
