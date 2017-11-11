@@ -1,10 +1,12 @@
 module Dot where
 
+import Control.Monad
 import Data.GraphViz.Attributes
 import Data.GraphViz.Attributes.Complete
 import Data.GraphViz.Types
 import Data.GraphViz.Types.Monadic
 import Data.GraphViz.Types.Generalised
+import Data.Monoid
 import Data.Text.Lazy
 import Data.Foldable (traverse_)
 
@@ -264,40 +266,69 @@ contradiction a b c = digraph_ "contradiction" $ do
   "a4" --> "b"
   "a4" --> "c"
 
+textNode name val = node name [toLabel val, shape PlainText]
+
+undirected s t = edge s t [Dir NoDir]
 
 powerset :: DotGraph String
 powerset = digraph_ "powerset" $ do
   graphAttrs [bgColor Transparent]
-  let n name val = node name [toLabel val, shape PlainText]
-  let a s t = edge s t [Dir NoDir]
-  n "empty" "{}"
-  n "a" "{1}"
-  n "b" "{2}"
-  n "c" "{3}"
-  n "d" "{4}"
-  n "ab" "{1,2}"
-  n "ac" "{1,3}"
-  n "ad" "{1,4}"
-  n "bc" "{2,3}"
-  n "bd" "{2,4}"
-  n "cd" "{3,4}"
-  n "abc" "{1,2,3}"
-  n "acd" "{1,3,4}"
-  n "abd" "{1,2,4}"
-  n "bcd" "{2,3,4}"
-  n "abcd" "{1,2,3,4}"
-  traverse_ (a "empty") ["a", "b", "c", "d"]
-  traverse_ (a "a") ["ab", "ac", "ad"]
-  traverse_ (a "b") ["ab", "bc", "bd"]
-  traverse_ (a "c") ["ac", "bc", "cd"]
-  traverse_ (a "d") ["ad", "bd", "cd"]
-  traverse_ (a "ab") ["abc", "abd"]
-  traverse_ (a "ac") ["abc", "acd"]
-  traverse_ (a "ad") ["abd", "acd"]
-  traverse_ (a "bc") ["abc", "bcd"]
-  traverse_ (a "bd") ["abd", "bcd"]
-  traverse_ (a "cd") ["acd", "bcd"]
-  traverse (flip a "abcd") ["abc", "bcd", "acd", "abd"]
+  textNode "empty" "{}"
+  textNode "a" "{1}"
+  textNode "b" "{2}"
+  textNode "c" "{3}"
+  textNode "d" "{4}"
+  textNode "ab" "{1,2}"
+  textNode "ac" "{1,3}"
+  textNode "ad" "{1,4}"
+  textNode "bc" "{2,3}"
+  textNode "bd" "{2,4}"
+  textNode "cd" "{3,4}"
+  textNode "abc" "{1,2,3}"
+  textNode "acd" "{1,3,4}"
+  textNode "abd" "{1,2,4}"
+  textNode "bcd" "{2,3,4}"
+  textNode "abcd" "{1,2,3,4}"
+  traverse_ (undirected "empty") ["a", "b", "c", "d"]
+  traverse_ (undirected "a") ["ab", "ac", "ad"]
+  traverse_ (undirected "b") ["ab", "bc", "bd"]
+  traverse_ (undirected "c") ["ac", "bc", "cd"]
+  traverse_ (undirected "d") ["ad", "bd", "cd"]
+  traverse_ (undirected "ab") ["abc", "abd"]
+  traverse_ (undirected "ac") ["abc", "acd"]
+  traverse_ (undirected "ad") ["abd", "acd"]
+  traverse_ (undirected "bc") ["abc", "bcd"]
+  traverse_ (undirected "bd") ["abd", "bcd"]
+  traverse_ (undirected "cd") ["acd", "bcd"]
+  traverse (flip undirected "abcd") ["abc", "bcd", "acd", "abd"]
+
+flat :: DotGraph String
+flat = digraph_ "flat" $ do
+  let theMin = -2
+  let theMax = 2
+  let theRange = (fmap show [theMin..theMax])
+  let c = "Contradiction"
+  let u = "Unknown"
+  let tn = join textNode
+  graphAttrs [bgColor Transparent]
+  tn c
+  textNode "eli1" "..."
+  traverse_ tn theRange
+  textNode "eli2" "..."
+  tn u
+  undirected c "eli1"
+  undirected "eli1" u
+  traverse_ (undirected c) theRange
+  undirected c "eli2"
+  undirected "eli2" u
+  traverse_ (flip undirected u) theRange
+  invisEdge' c u [Weight (Int 0), MinLen 2]
+
+moreInfo :: DotGraph String
+moreInfo = digraph_ "moreInfo" $ cluster (Num (Int 0)) $ do
+  textNode "more" "More information"
+  textNode "less" "Less information"
+  edge "more" "less" [Dir Both, Style [dotted], MinLen 2]
 
 dotFile :: String -> DotGraph String -> IO ()
 dotFile fn = writeFile fn . unpack . printDotGraph

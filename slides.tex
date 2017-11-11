@@ -393,6 +393,8 @@ A propagator network comprises
 
 \textslide{\Large{Cells {\it accumulate information} about a value}}
 
+\input{contradiction.tex}
+
 \input{sudoku.tex}
 
 \input{set.tex}
@@ -402,9 +404,6 @@ A propagator network comprises
 %\input{screen.tex}
 
 
-\imageslide[0.6]{doubleplus0.pdf}
-\imageslide[0.6]{doubleplus1.pdf}
-\imageslide[0.6]{doubleplus2.pdf}
 
 
 \textslide{{\LARGE
@@ -440,53 +439,6 @@ What types are the values of the cells?
 %\imageslideleft{contradiction1.pdf}
 %\imageslideleft{contradiction2.pdf}
 %\imageslideleft{contradiction3.pdf}
-
-
-\begin{frame}[fragile]
-\begin{haskellcode}
-data Perhaps a = Unknown | Known a | Contradiction
-\end{haskellcode}
-\end{frame}
-
-\begin{frame}[fragile]
-
-\begin{haskellcode}
-data Perhaps a = Unknown | Known a | Contradiction
-\end{haskellcode}
-
-\nl
-
-\begin{haskellcode}
-instance Eq a => Monoid (Perhaps a) where
-
-  mempty = Unknown
-
-  mappend Unknown x           = x
-  mappend x       Unknown     = x
-  mappend Contradiction _     = Contradiction
-  mappend _     Contradiction = Contradiction
-  mappend (Known a) (Known b) =
-    if a == b
-      then Known a
-      else Contradiction
-\end{haskellcode}
-
-\end{frame}
-
-
-%\imageslideleft{contradiction4.pdf}
-%\imageslideleft{contradiction5.pdf}
-%\imageslideleft{contradiction6.pdf}
-%\imageslideleft{contradiction7.pdf}
-%\imageslideleft{contradiction8.pdf}
-%\imageslideleft{contradiction9.pdf}
-
-\imageslide[0.6]{doubleplus4.pdf}
-\imageslide[0.6]{doubleplus5.pdf}
-\imageslide[0.6]{doubleplus6.pdf}
-\imageslide[0.6]{doubleplus7.pdf}
-\imageslide[0.6]{doubleplus8.pdf}
-
 
 \textslide{
 \LARGE{
@@ -594,13 +546,50 @@ $x \vee x = x$
 }}
 
 
-\textslide{
-{\LARGE Partial information that supports merging!}
-}
-
-
-
 \textslide{\LARGE Other examples?}
+
+
+\begin{frame}
+TODO point to Alexey's stuff here
+\end{frame}
+
+\begin{frame}
+Edward Kmett has worked on:
+
+\begin{itemize}
+\item Making it go fast
+\item Scheduling strategies and garbage collection
+\item Relaxing requirements (Eg. not requiring a full join-semilattice, admitting non-monotone functions)
+\end{itemize}
+
+TODO finish this slide
+\end{frame}
+
+
+\begin{frame}
+
+TODO expand this
+
+In conclusion, propagator networks:
+
+\begin{itemize}
+\item Are parallelisable and distributable
+\item Admit any Haskell function you can write today \ldots
+\item \ldots and more functions!
+\item compute bidirectionally
+\item give us constraint solving
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+TODO expand on all this
+
+Things we could build with propagators:
+
+The best spreadsheet
+\end{frame}
+
 
 \end{document} 
 

@@ -1,6 +1,6 @@
-all: simples adds mults badds celsius upper maybe doubleplus contradiction intervaladd powerset
+all: simples adds mults badds celsius upper maybe perhaps doubleplus contradiction intervaladd lattices
 
-.PHONY: all clean simples adds mults badds celsius upper maybe doubeplus contradiction intervaladd powerset
+.PHONY: all clean simples adds mults badds celsius upper maybe perhaps doubeplus contradiction intervaladd lattices
 
 RUN_CABAL = nix-shell --command "cabal run"
 
@@ -28,13 +28,15 @@ upper: upper1.pdf upper2.pdf upper3.pdf
 
 maybe: maybe1.pdf maybe2.pdf maybe3.pdf maybe4.pdf
 
+perhaps: perhaps1.pdf perhaps2.pdf
+
 doubleplus: doubleplus0.pdf doubleplus1.pdf doubleplus2.pdf doubleplus3.pdf doubleplus4.pdf doubleplus5.pdf doubleplus6.pdf doubleplus7.pdf doubleplus8.pdf doubleplus9.pdf doubleplus10.pdf doubleplus11.pdf doubleplus12.pdf doubleplus13.pdf doubleplus14.pdf doubleplus15.pdf doubleplus16.pdf doubleplus17.pdf
 
 contradiction: contradiction1.pdf contradiction2.pdf contradiction3.pdf contradiction4.pdf contradiction5.pdf contradiction6.pdf contradiction7.pdf contradiction8.pdf contradiction9.pdf
 
 intervaladd: intervaladd1.pdf intervaladd2.pdf
 
-powerset: powerset.pdf
+lattices: powerset.pdf flat.pdf more-information.pdf
 
 %.dot: $(HASKELL_SRCS)
 	$(RUN_CABAL)

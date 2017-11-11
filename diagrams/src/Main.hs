@@ -69,6 +69,9 @@ main = do
   dotFile "maybe3.dot" (addition "Just 3" "Just 4" "Nothing")
   dotFile "maybe4.dot" (addition "Just 3" "Just 4" "Just 7")
 
+  dotFile "perhaps1.dot" (addition "Known 3" "Known 4" "Unknown")
+  dotFile "perhaps2.dot" (addition "Known 3" "Known 4" " Known 7 ")
+
   dotFile "intervaladd1.dot" (addition "[2,5]" "[9,10]" "[-∞,∞]")
   dotFile "intervaladd2.dot" (addition "[2,5]" "[9,10]" "[11,15]")
 
@@ -110,4 +113,5 @@ main = do
   dotFile "contradiction9.dot" (contradiction "Known 3" "       Contradiction       " "Known 4")
 
   dotFile "powerset.dot" powerset
- 
+  dotFile "flat.dot" flat
+  dotFile "more-information.dot" moreInfo 
