@@ -49,8 +49,6 @@
 
 
 \newminted{haskell}{}
-\newminted{java}{}
-\newminted{scala}{}
 
 \definecolor{g}{RGB}{0,100,0}
 \newcommand{\highlight}[1]{\colorbox{yellow}{#1}}
@@ -70,6 +68,15 @@
 \end{center}
 \end{frame}
 }}
+
+\newcommand{\textslideleft}[1]{{
+\begin{frame}
+
+#1
+
+\end{frame}
+}}
+
 
 \newcommand{\codeslide}[1]{{
 \begin{frame}[fragile]
@@ -546,50 +553,78 @@ $x \vee x = x$
 }}
 
 
-\textslide{\LARGE Other examples?}
-
 
 \begin{frame}
-TODO point to Alexey's stuff here
+
+Alexey Radul's work on propagators:
+
+\begin{itemize}
+\item Art of the Propagator \\
+      \url{http://web.mit.edu/~axch/www/art.pdf}
+\item Propagation Networks: A Flexible and Expressive Substrate for Computation \\
+      \url{http://web.mit.edu/~axch/www/phd-thesis.pdf}
+\end{itemize}
 \end{frame}
 
-\begin{frame}
+
+\textslideleft{
+
+Lindsey Kuper's work on LVars is closely related, and works today:
+
+\begin{itemize}
+\item Lattice-Based Data Structures for Deterministic Parallel and Distributed Programming \\
+      \url{https://www.cs.indiana.edu/~lkuper/papers/lindsey-kuper-dissertation.pdf}
+\item lvish library \\
+      \url{https://hackage.haskell.org/package/lvish}
+\end{itemize}
+
+}
+
+\textslideleft{
 Edward Kmett has worked on:
 
 \begin{itemize}
-\item Making it go fast
+\item Making propagators go fast
 \item Scheduling strategies and garbage collection
 \item Relaxing requirements (Eg. not requiring a full join-semilattice, admitting non-monotone functions)
 \end{itemize}
 
-TODO finish this slide
-\end{frame}
+Ed's stuff:
+\begin{itemize}
+\item \url{http://github.com/ekmett/propagators}
+\item \url{http://github.com/ekmett/concurrent}
+\item Lambda Jam talk (Easy mode): \\
+      \url{https://www.youtube.com/watch?v=acZkF6Q2XKs}
+\item Boston Haskell talk (Hard mode): \\
+      \url{https://www.youtube.com/watch?v=DyPzPeOPgUE}
 
+\end{itemize}
+}
 
-\begin{frame}
-
-TODO expand this
+\textslideleft{
 
 In conclusion, propagator networks:
 
 \begin{itemize}
-\item Are parallelisable and distributable
 \item Admit any Haskell function you can write today \ldots
 \item \ldots and more functions!
 \item compute bidirectionally
-\item give us constraint solving
+\item give us constraint solving and search
+\item parallelise and distribute
 \end{itemize}
-\end{frame}
+}
+
+%\textslideleft{
+%TODO expand on all this
+%
+%Things we could build with propagators:
+%
+%The best spreadsheet
+%}
 
 
-\begin{frame}
-TODO expand on all this
-
-Things we could build with propagators:
-
-The best spreadsheet
-\end{frame}
+\textslide{\Large{Thanks for listening!}}
 
 
-\end{document} 
+\end{document}
 
