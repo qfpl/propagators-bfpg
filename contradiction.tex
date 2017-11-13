@@ -1,8 +1,10 @@
-\begin{frame}[fragile]
-\begin{haskellcode}
-data Perhaps a = Unknown | Known a | Contradiction
-\end{haskellcode}
-\end{frame}
+\imageslide{add3.pdf}
+
+%\begin{frame}[fragile]
+%\begin{haskellcode}
+%data Perhaps a = Unknown | Known a | Contradiction
+%\end{haskellcode}
+%\end{frame}
 
 \begin{frame}[fragile]
 
@@ -10,7 +12,7 @@ data Perhaps a = Unknown | Known a | Contradiction
 data Perhaps a = Unknown | Known a | Contradiction
 \end{haskellcode}
 
-\nl
+\pnl
 
 \begin{haskellcode}
 instance Eq a => Monoid (Perhaps a) where
@@ -29,7 +31,6 @@ instance Eq a => Monoid (Perhaps a) where
 
 \end{frame}
 
-\imageslide{add3.pdf}
 \imageslide{perhaps1.pdf}
 \imageslide{perhaps2.pdf}
 

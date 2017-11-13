@@ -6,7 +6,6 @@ import Data.GraphViz.Attributes.Complete
 import Data.GraphViz.Types
 import Data.GraphViz.Types.Monadic
 import Data.GraphViz.Types.Generalised
-import Data.Monoid
 import Data.Text.Lazy
 import Data.Foldable (traverse_)
 
@@ -266,8 +265,10 @@ contradiction a b c = digraph_ "contradiction" $ do
   "a4" --> "b"
   "a4" --> "c"
 
+textNode :: Labellable a => n -> a -> Dot n
 textNode name val = node name [toLabel val, shape PlainText]
 
+undirected :: (NodeList n t, NodeList n f) => f -> t -> Dot n
 undirected s t = edge s t [Dir NoDir]
 
 powerset :: DotGraph String
@@ -304,8 +305,8 @@ powerset = digraph_ "powerset" $ do
 
 flat :: DotGraph String
 flat = digraph_ "flat" $ do
-  let theMin = -2
-  let theMax = 2
+  let theMin = -2 :: Int
+  let theMax = 2 :: Int
   let theRange = (fmap show [theMin..theMax])
   let c = "Contradiction"
   let u = "Unknown"
@@ -328,7 +329,7 @@ moreInfo :: DotGraph String
 moreInfo = digraph_ "moreInfo" $ cluster (Num (Int 0)) $ do
   textNode "more" "More information"
   textNode "less" "Less information"
-  edge "more" "less" [Dir Both, Style [dotted], MinLen 2]
+  edge "more" "less" [Dir Both, Style [dotted], MinLen 8]
 
 dotFile :: String -> DotGraph String -> IO ()
 dotFile fn = writeFile fn . unpack . printDotGraph

@@ -77,6 +77,16 @@
 \end{frame}
 }}
 
+\newcommand{\latticeinfoslide}[1]{{
+\begin{frame}
+\begin{columns}
+\column{0.7\textwidth}
+\includegraphics[scale=0.65]{#1}
+\column{0.3\textwidth}
+\includegraphics[scale=0.5]{more-information.pdf}
+\end{columns}
+\end{frame}
+}}
 
 \newcommand{\codeslide}[1]{{
 \begin{frame}[fragile]
@@ -400,28 +410,28 @@ A propagator network comprises
 
 \textslide{\Large{Cells {\it accumulate information} about a value}}
 
-\input{contradiction.tex}
-
 \input{sudoku.tex}
 
 \input{set.tex}
+
+\input{contradiction.tex}
 
 \input{interval.tex}
 
 %\input{screen.tex}
 
+\textslide{(Talk about truth-management system machinery)}
 
 
+%\textslide{{\LARGE
+%What types are the values of the cells?
+%}}
 
-\textslide{{\LARGE
-What types are the values of the cells?
-}}
 
-
-\imageslide{cell1.pdf}
-\imageslide{cell2.pdf}
-\imageslide{cell3.pdf}
-\imageslide{cell4.pdf}
+%\imageslide{cell1.pdf}
+%\imageslide{cell2.pdf}
+%\imageslide{cell3.pdf}
+%\imageslide{cell4.pdf}
 
 
 %\begin{frame}[fragile]
@@ -447,110 +457,17 @@ What types are the values of the cells?
 %\imageslideleft{contradiction2.pdf}
 %\imageslideleft{contradiction3.pdf}
 
-\textslide{
-\LARGE{
-Is this the only type propagator cells can contain?
-
-Will other monoids work?
-}
-
-\pnl
-
-\Large{What about List?}
-}
-
-\imageslide[0.6]{doubleplus9.pdf}
-\imageslide[0.6]{doubleplus10.pdf}
-\imageslide[0.6]{doubleplus11.pdf}
-\textslide{\Large{Looking good?}}
-\imageslide[0.6]{doubleplus12.pdf}
-\imageslide[0.6]{doubleplus13.pdf}
-\imageslide[0.6]{doubleplus14.pdf}
-\imageslide[0.6]{doubleplus11.pdf}
-\imageslide[0.6]{doubleplus14.pdf}
-
-
-\begin{frame}[fragile]
-\begin{center}
-\Large{
-  We need commutativity!
-
-  \nl
-
-  $x \oplus y = y \oplus x$
-
-  \pnl
-
-  List append is not commutative!
-
-  {\tt {
-    [1,2,3] <> [4,5,6] == [1,2,3,4,5,6]
-  }}
-
-  {\tt {
-    [4,5,6] <> [1,2,3] == [4,5,6,1,2,3]
-  }}
-}
-\end{center}
-\end{frame}
-
-
-\textslide{\Large{
-We need a commutative monoid
-
-What about addition?
-
-\nl
-
-$x + y = y + x$
-}}
-
-\imageslide[0.6]{doubleplus15.pdf}
-\imageslide[0.6]{doubleplus16.pdf}
-\imageslide[0.6]{doubleplus17.pdf}
-
-%% No good
-%\imageslide{badd5.pdf}
-%\imageslide{badd6.pdf}
-%\imageslide{badd7.pdf}
-%\imageslide{badd8.pdf}
-%\imageslide{badd9.pdf}
-%\imageslide{badd10.pdf}
-%\imageslide{badd11.pdf}
-
-
-\textslide{\Large{
-We need idempotence!
-
-\nl
-
-$x \oplus x = x$
-
-}}
-
-\textslide{\Large{
-
-We need an idempotent, commutative monoid.
-
-This structure is called a {\it join-semilattice}
-
-\nl
-
-Associativity
-
-$(x \vee y) \vee z = x \vee (y \vee z)$
-\nl
-
-Commutativity
-
-$x \vee y = y \vee x$
-\nl
-
-Idempotence
-
-$x \vee x = x$
-
-}}
+%\textslide{
+%\LARGE{
+%Is this the only type propagator cells can contain?
+%
+%Will other monoids work?
+%}
+%
+%\pnl
+%
+%\Large{What about List?}
+%}
 
 
 
