@@ -15,15 +15,15 @@ data Perhaps a = Unknown | Known a | Contradiction
 \pnl
 
 \begin{haskellcode}
-instance Eq a => Monoid (Perhaps a) where
+instance Eq a => BoundedJoinSemiLattice (Perhaps a) where
 
-  mempty = Unknown
+  bottom = Unknown
 
-  mappend Unknown x           = x
-  mappend x       Unknown     = x
-  mappend Contradiction _     = Contradiction
-  mappend _     Contradiction = Contradiction
-  mappend (Known a) (Known b) =
+  (\/) Unknown x           = x
+  (\/) x       Unknown     = x
+  (\/) Contradiction _     = Contradiction
+  (\/) _     Contradiction = Contradiction
+  (\/) (Known a) (Known b) =
     if a == b
       then Known a
       else Contradiction
