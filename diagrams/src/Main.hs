@@ -80,9 +80,9 @@ main = do
   dotFile "doubleplus2.dot" (doubleplus "3" "4" "Contradiction" "6" "6")
   dotFile "doubleplus3.dot" (doubleplus "Just 3" "Just 4" "?" "Just 6" "Just 6")
   dotFile "doubleplus4.dot" (doubleplus "Known 3" "Known 4" "Unknown" "Known 6" "Known 6")
-  dotFile "doubleplus5.dot" (doubleplus "Known 3" "Known 4" "Known 12 <> Unknown" "Known 6" "Known 6")
-  dotFile "doubleplus6.dot" (doubleplus "Known 3" "Known 4" "Known 7 <> Known 12 <> Unknown" "Known 6" "Known 6")
-  dotFile "doubleplus7.dot" (doubleplus "Known 3" "Known 4" "Known 7 <> Known 12" "Known 6" "Known 6")
+  dotFile "doubleplus5.dot" (doubleplus "Known 3" "Known 4" "Known 12 \\/ Unknown" "Known 6" "Known 6")
+  dotFile "doubleplus6.dot" (doubleplus "Known 3" "Known 4" "Known 7 \\/ Known 12 \\/ Unknown" "Known 6" "Known 6")
+  dotFile "doubleplus7.dot" (doubleplus "Known 3" "Known 4" "Known 7 \\/ Known 12" "Known 6" "Known 6")
   dotFile "doubleplus8.dot" (doubleplus "Known 3" "Known 4" "Contradiction" "Known 6" "Known 6")
   dotFile "doubleplus9.dot" (doubleplus "[3]" "[4]" "[]" "[6]" "[6]")
   dotFile "doubleplus10.dot" (doubleplus "[3]" "[4]" "[7] <> [12] <> []" "[6]" "[6]")
@@ -106,12 +106,13 @@ main = do
   dotFile "contradiction2.dot" (contradiction "Just 3" "Nothing" "Just 4")
   dotFile "contradiction3.dot" (contradiction "Just 3" "      ?     " "Just 4")
   dotFile "contradiction4.dot" (contradiction "Unknown" "          Unknown          " "Unknown")
-  dotFile "contradiction5.dot" (contradiction "Known 3 <> Unknown" "Known 3 <> Known 4 <> Unknown" "Known 4 <> Unknown")
-  dotFile "contradiction6.dot" (contradiction "Known 3" "Known 3 <> Known 4 <> Unknown" "Known 4 <> Unknown")
-  dotFile "contradiction7.dot" (contradiction "Known 3" "Known 3 <> Known 4 <> Unknown" "Known 4")
-  dotFile "contradiction8.dot" (contradiction "Known 3" "Known 3 <> Known 4" "Known 4")
+  dotFile "contradiction5.dot" (contradiction "Known 3 \\/ Unknown" "Known 3 \\/ Known 4 \\/ Unknown" "Known 4 \\/ Unknown")
+  dotFile "contradiction6.dot" (contradiction "Known 3" "Known 3 \\/ Known 4 \\/ Unknown" "Known 4 \\/ Unknown")
+  dotFile "contradiction7.dot" (contradiction "Known 3" "Known 3 \\/ Known 4 \\/ Unknown" "Known 4")
+  dotFile "contradiction8.dot" (contradiction "Known 3" "Known 3 \\/ Known 4" "Known 4")
   dotFile "contradiction9.dot" (contradiction "Known 3" "       Contradiction       " "Known 4")
 
   dotFile "powerset.dot" powerset
+  dotFile "powerset-upside-down.dot" powersetUpsideDown
   dotFile "flat.dot" flat
   dotFile "more-information.dot" moreInfo 

@@ -272,7 +272,13 @@ undirected :: (NodeList n t, NodeList n f) => f -> t -> Dot n
 undirected s t = edge s t [Dir NoDir]
 
 powerset :: DotGraph String
-powerset = digraph_ "powerset" $ do
+powerset = digraph_ "powerset" powerset_
+
+powersetUpsideDown = digraph_ "powersetUpsideDown" $ do
+  graphAttrs [RankDir FromBottom]
+  powerset_
+
+powerset_ = do
   graphAttrs [bgColor Transparent]
   textNode "empty" "{}"
   textNode "a" "{1}"

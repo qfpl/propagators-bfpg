@@ -78,7 +78,22 @@ $x \vee x = x$
 }
 
 \textslideleft{
-  These laws and some other conditions make propagator networks deterministic,
+  We don't write values directly to cells
+
+  Instead we {\it join information in}
+
+  \pnl
+
+  This makes our propagators {\it monotone}, meaning that as the input cells gain information, the output cells gain information (or don't change)
+
+  \pnl
+
+  A function $f : A \rightarrow B$ where $A$ and $B$ are partially ordered sets is {\bf monotone} if and only if, \\
+  for all $x,y \in A .$ $x \leq y \implies f(x) \leq f(y)$
+}
+
+\textslideleft{
+  The bounded join-semilattice laws and monotonicity make propagator networks deterministic,
 
   even in the face of parallelism and distribution
 

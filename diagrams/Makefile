@@ -48,7 +48,7 @@ contradiction: contradiction1.pdf contradiction2.pdf contradiction3.pdf contradi
 
 intervaladd: intervaladd1.pdf intervaladd2.pdf
 
-lattices: powerset.pdf set/powerset-info1.pdf set/powerset-info2.pdf set/powerset-info3.pdf set/powerset-info4.pdf set/powerset1.pdf set/powerset2.pdf set/powerset3.pdf set/powerset4.pdf set/powerset5.pdf set/powerset6.pdf flat.pdf more-information.pdf
+lattices: powerset.pdf powerset-upside-down.pdf set/powerset-info1.pdf set/powerset-info2.pdf set/powerset-info3.pdf set/powerset-info4.pdf set/powerset1.pdf set/powerset2.pdf set/powerset3.pdf set/powerset4.pdf set/powerset5.pdf set/powerset6.pdf flat.pdf more-information.pdf
 
 clean:
 	rm -rf *.pdf *.dot *.pdf_tex *.svg set/*.pdf
