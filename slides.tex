@@ -262,6 +262,28 @@ And then
 \end{frame}
 
 
+\begin{frame}
+They're related to many areas of research, including:
+
+\begin{itemize}
+\item Logic programming (particularly Datalog)
+\item Constraint solvers
+\item Conflict-Free Replicated Datatypes
+\item LVars
+\item Programming language theory
+\item And Spreadsheets!
+\end{itemize}
+
+They have advantages:
+
+\begin{itemize}
+\item are extremely expressive
+\item lend themselves to parallel and distributed evaluation
+\item allow different strategies of problem-solving to cooperate
+\end{itemize}
+\end{frame}
+
+
 %%%%%
 %%%%% What and why
 %%%%%
@@ -282,17 +304,6 @@ The {\it propagator model} is a model of computation
 We model computations as {\it propagator networks}
 
 \pnl
-
-Propagator networks:
-\begin{itemize}
-\item are extremely expressive
-\item lend themselves to parallel and distributed evaluation
-\item allow different strategies of problem-solving to seamlessly cooperate
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}
 
 A propagator network comprises
 \begin{itemize}
@@ -334,22 +345,30 @@ A propagator network comprises
 \imageslide[0.7]{powerset.pdf}
 \imageslide[0.7]{powerset-upside-down.pdf}
 
-\textslide{And so many more!}
+\textslideleft{
 
-\textslide{(Talk about truth-management system machinery)}
+  \begin{itemize}
+    \item Set intersection
+    \item Set union
+    \item Interval arithmetic
+    \item {\tt Perhaps}
+  \end{itemize}
+
+  \nl
+
+  And so many more!
+
+  \pnl
+
+  \centering
+  {\Huge ?}
+}
 
 
-\textslide{Using truth management systems, we can do logic programming (TODO expand)}
+\input{tms.tex}
 
-%\textslideleft{
-%TODO expand on all this
-%
-%Things we could build with propagators:
-%
-%The best spreadsheet
-%Type inference
-%}
 
+\textslide{\centering {\Huge ?}}
 
 
 \begin{frame}

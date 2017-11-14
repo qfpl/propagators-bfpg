@@ -1,11 +1,5 @@
 \imageslide{add3.pdf}
 
-%\begin{frame}[fragile]
-%\begin{haskellcode}
-%data Perhaps a = Unknown | Known a | Contradiction
-%\end{haskellcode}
-%\end{frame}
-
 \begin{frame}[fragile]
 
 \begin{haskellcode}
@@ -31,6 +25,20 @@ instance Eq a => BoundedJoinSemiLattice (Perhaps a) where
 
 \end{frame}
 
+
+\begin{frame}
+
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[scale=0.65]{flat.pdf}
+\pause
+\column{0.2\textwidth}
+\column{0.3\textwidth}
+\includegraphics[scale=0.65]{more-information.pdf}
+\end{columns}
+\end{frame}
+
+
 \imageslide{perhaps1.pdf}
 \imageslide{perhaps2.pdf}
 
@@ -50,16 +58,3 @@ instance Eq a => BoundedJoinSemiLattice (Perhaps a) where
 \imageslide[0.6]{doubleplus6.pdf}
 \imageslide[0.6]{doubleplus7.pdf}
 \imageslide[0.6]{doubleplus8.pdf}
-
-
-\begin{frame}
-\begin{columns}
-\column{0.5\textwidth}
-\includegraphics[scale=0.65]{flat.pdf}
-\pause
-\column{0.2\textwidth}
-\column{0.3\textwidth}
-\includegraphics[scale=0.65]{more-information.pdf}
-\end{columns}
-\end{frame}
-

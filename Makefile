@@ -14,7 +14,7 @@ SPELL = aspell check -len_GB
 
 slides: slides.pdf extra.pdf
 
-slides.pdf: $(SLIDES_TEX) celsius.tex circuit.pdf_tex diagrams interval.tex screen.tex set.tex
+slides.pdf: $(SLIDES_TEX) celsius.tex circuit.pdf_tex coloured-map.pdf_tex diagrams interval.tex screen.tex set.tex
 	$(LATEX_SLIDES)
 	$(LATEX_SLIDES)
 	$(LATEX_SLIDES)
@@ -29,6 +29,9 @@ diagrams: diagrams/Makefile
 
 circuit.pdf_tex : circuit.svg
 	inkscape -D -z --file=circuit.svg --export-pdf=circuit.pdf --export-latex
+
+coloured-map.pdf_tex : coloured-map.svg
+	inkscape -D -z --file=coloured-map.svg --export-pdf=coloured-map.pdf --export-latex
 
 spell: $(SLIDES_TEX) $(EXTRA_TEX)
 	$(SPELL) $(SLIDES_TEX)

@@ -1,18 +1,3 @@
-\begin{frame}
-\begin{columns}
-\column{0.7\textwidth}
-\includegraphics[scale=0.65]{powerset.pdf}
-\pause
-\column{0.3\textwidth}
-\includegraphics[scale=0.5]{more-information.pdf}
-\end{columns}
-\end{frame}
-
-
-\latticeinfoslide{set/powerset-info1.pdf}
-\latticeinfoslide{set/powerset-info2.pdf}
-\latticeinfoslide{set/powerset-info3.pdf}
-\latticeinfoslide{set/powerset-info4.pdf}
 
 \textslideleft{
 
@@ -34,12 +19,28 @@ A bounded join-semilattice is:
 
 }
 
-\imageslide[0.7]{set/powerset1.pdf}
-\imageslide[0.7]{set/powerset2.pdf}
-\imageslide[0.7]{set/powerset3.pdf}
-\imageslide[0.7]{set/powerset4.pdf}
-\imageslide[0.7]{set/powerset5.pdf}
-\imageslide[0.7]{set/powerset6.pdf}
+\begin{frame}
+\begin{columns}
+\column{0.7\textwidth}
+\includegraphics[scale=0.65]{powerset.pdf}
+\pause
+\column{0.3\textwidth}
+\includegraphics[scale=0.5]{more-information.pdf}
+\end{columns}
+\end{frame}
+
+
+\latticeinfoslide{set/powerset-info1.pdf}
+\latticeinfoslide{set/powerset-info2.pdf}
+\latticeinfoslide{set/powerset-info3.pdf}
+\latticeinfoslide{set/powerset-info4.pdf}
+
+\latticeinfoslide{set/powerset1.pdf}
+\latticeinfoslide{set/powerset2.pdf}
+\latticeinfoslide{set/powerset3.pdf}
+\latticeinfoslide{set/powerset4.pdf}
+\latticeinfoslide{set/powerset5.pdf}
+\latticeinfoslide{set/powerset6.pdf}
 
 \textslideleft{
 $\vee$ has useful algebraic properties. It is:
@@ -77,6 +78,31 @@ Idempotent
 $x \vee x = x$
 }
 
+\begin{frame}[fragile]
+  \begin{haskellcode}
+class BoundedJoinSemilattice a where
+  bottom :: a
+  (\/) :: a -> a -> a
+  \end{haskellcode}
+
+  \pnl
+
+  \begin{haskellcode}
+data SudokuVal = One | Two | Three | Four
+                 deriving (Eq, Ord, Show)
+  \end{haskellcode}
+  \pause
+  \begin{haskellcode}
+newtype SudokuSet = S (Set SudokuVal)
+  \end{haskellcode}
+  \pnl
+  \begin{haskellcode}
+instance BoundedJoinSemilattice SudokuSet where
+  bottom     = S (Set.fromList [One, Two, Three, Four])
+  S a \/ S b = S (Set.intersection a b)
+  \end{haskellcode}
+\end{frame}
+
 \textslideleft{
   We don't write values directly to cells
 
@@ -93,7 +119,7 @@ $x \vee x = x$
 }
 
 \textslideleft{
-  The bounded join-semilattice laws and monotonicity make propagator networks deterministic,
+  The bounded join-semilattice laws and monotonicity, combined with the finiteness of our lattices, make propagator networks deterministic,
 
   even in the face of parallelism and distribution
 
@@ -102,6 +128,10 @@ $x \vee x = x$
   Bounded join-semilattices are already popular in the distributed systems world
 
   See: Conflict Free Replicated Datatypes
+
+  \pnl
+
+  We can relax these constraints in a few different directions
 }
 
 \textslide{\Huge{?}}

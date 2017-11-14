@@ -1,0 +1,104 @@
+\textslide{
+  What happens when we hit contradiction?
+  
+  \pnl
+  
+  {\Huge{:(}}
+
+  \pnl
+
+  Monotonicity means that contradiction propagators all over the place
+}
+
+\textslide{
+  \Large{
+    If we track the provenance of information, \\
+    we can help identify the source of contradiction
+
+    \pnl
+
+    Then we can keep track of which subsets of the information are consistent
+
+    \nl
+
+    and which are inconsistent
+  }
+}
+
+\textslideleft{
+  \begin{columns}[T]
+    \column{0.05\textwidth}
+    \column{0.35\textwidth}
+    \Large
+
+    $ [2,5] \cap [3,7] \cap [6,9] = []$
+
+    \pnl
+
+    $[2,5] \cap [3,7] = [3,5]$
+
+    \pnl
+
+    $[3,7] \cap [6,9] = [6,7]$
+
+    \pnl
+
+    $[2,5] \cap [6,9] = []$
+
+  \column{0.3\textwidth}
+  \pause
+  \centering
+    Consistent subsets:
+
+    $\{\}$
+    
+    $\{[2,5]\}$
+    
+    $\{[3,7]\}$
+    
+    $\{[6,7]\}$
+
+    $\{[2,5], [3,7]\}$
+
+    $\{[3,7], [6,9]\}$
+
+    \nl
+
+    Maximal consistent subsets:
+
+    $\{[2,5], [3,7]\}$
+
+    $\{[3,7], [6,9]\}$
+
+    \column{0.3\textwidth}
+    \pause
+    \centering
+    Inconsistent subsets:
+
+    $\{[2,5], [6,9]\}$
+    $\{[2,5], [3,7], [6,9]\}$
+
+    \nl
+
+    Minimal inconsistent subsets:
+
+    $\{[2,5], [6,9]\}$
+  \end{columns}
+}
+
+\textslide{
+  \Large{
+    This concept is something called a {\it Truth Management System}
+  }
+}
+
+\textslide{
+  Now that we can handle contradiction, we can make guesses!
+
+  This lets us encode search problems easily
+
+  \nl
+
+  \def\svgwidth{0.6\columnwidth}
+  \input{coloured-map.pdf_tex}
+}
