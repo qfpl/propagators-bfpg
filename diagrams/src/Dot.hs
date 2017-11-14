@@ -358,15 +358,21 @@ tree = digraph_ "tree" $ do
   graphAttrs [RankDir FromBottom]
   cell "1" "5"
   cell "2" "2"
+  cell "5+2" ""
   cell "3" "x"
   cell "4" "y"
-  cell "+1" "+"
-  cell "+2" "+"
-  cell "times" "×"
+  cell "x+y" ""
+  propagator "+1" "+"
+  propagator "+2" "+"
+  propagator "times" "×"
+  cell "out" ""
 
   traverse_ (--> "+1") ["1","2"]
   traverse_ (--> "+2") ["3","4"]
-  traverse_ (--> "times") ["+1","+2"]
+  "+1" --> "5+2"
+  "+2" --> "x+y"
+  traverse_ (--> "times") ["5+2","x+y"]
+  "times" --> "out"
 
 dotFile :: String -> DotGraph String -> IO ()
 dotFile fn = writeFile fn . unpack . printDotGraph

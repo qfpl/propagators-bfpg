@@ -10,7 +10,7 @@ A bounded join-semilattice is:
 \begin{itemize}
 \item A {\it partially ordered set}
 \item with a least element
-\item such that any set of elements has a {\it least upper bound}
+\item such that any subset of elements has a {\it least upper bound}
 \end{itemize}
 
 \pnl
@@ -125,8 +125,13 @@ instance BoundedJoinSemilattice SudokuSet where
 }
 
 \textslideleft{
-  The bounded join-semilattice laws combined with the finiteness of our lattices, \\
-  make propagator networks deterministic, even in the face of parallelism and distribution
+  Thanks to these properties:
+  \begin{itemize}
+    \item the bounded join-semilattice laws
+    \item the finiteness of our lattice
+    \item the monotonicity of our propagators
+  \end{itemize}
+  our propagator networks will yield with a deterministic answer, in finite time, regardless of parallelism and distribution
 
   \pnl
 
