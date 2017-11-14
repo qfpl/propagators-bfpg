@@ -337,6 +337,37 @@ moreInfo = digraph_ "moreInfo" $ cluster (Num (Int 0)) $ do
   textNode "less" "Less information"
   edge "more" "less" [Dir Both, Style [dotted], MinLen 8]
 
+dcpo :: DotGraph String
+dcpo = digraph_ "dcpo" $ do
+  let theMin = -2 :: Int
+  let theMax = 2 :: Int
+  let theRange = (fmap show [theMin..theMax])
+  let u = "⊥"
+  let tn = join textNode
+  graphAttrs [bgColor Transparent]
+  textNode "eli1" "..."
+  traverse_ tn theRange
+  textNode "eli2" "..."
+  tn u
+  undirected "eli1" u
+  undirected "eli2" u
+  traverse_ (flip undirected u) theRange
+
+tree :: DotGraph String
+tree = digraph_ "tree" $ do
+  graphAttrs [RankDir FromBottom]
+  cell "1" "5"
+  cell "2" "2"
+  cell "3" "x"
+  cell "4" "y"
+  cell "+1" "+"
+  cell "+2" "+"
+  cell "times" "×"
+
+  traverse_ (--> "+1") ["1","2"]
+  traverse_ (--> "+2") ["3","4"]
+  traverse_ (--> "times") ["+1","+2"]
+
 dotFile :: String -> DotGraph String -> IO ()
 dotFile fn = writeFile fn . unpack . printDotGraph
 

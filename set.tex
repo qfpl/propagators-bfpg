@@ -118,10 +118,15 @@ instance BoundedJoinSemilattice SudokuSet where
   for all $x,y \in A .$ $x \leq y \implies f(x) \leq f(y)$
 }
 
-\textslideleft{
-  The bounded join-semilattice laws and monotonicity, combined with the finiteness of our lattices, make propagator networks deterministic,
+\textslide{
+  All our lattices so far have been fininte
 
-  even in the face of parallelism and distribution
+  \includegraphics[scale=0.6]{powerset.pdf}
+}
+
+\textslideleft{
+  The bounded join-semilattice laws combined with the finiteness of our lattices, \\
+  make propagator networks deterministic, even in the face of parallelism and distribution
 
   \pnl
 
@@ -132,6 +137,12 @@ instance BoundedJoinSemilattice SudokuSet where
   \pnl
 
   We can relax these constraints in a few different directions
+}
+
+\textslide{
+  Our lattices only need the {\it ascending chain condition}
+
+  \includegraphics[scale=0.8]{flat.pdf}
 }
 
 \textslide{\Huge{?}}

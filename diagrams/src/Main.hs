@@ -32,6 +32,7 @@ main = do
   dotFile "badd2.dot" (bidirectionalAddition "" "4" "")
   dotFile "badd3.dot" (bidirectionalAddition "" "4" "7")
   dotFile "badd4.dot" (bidirectionalAddition "3" "4" "7")
+  dotFile "badd12.dot" (bidirectionalAddition "3" "4" "")
 
   dotFile "celsius1.dot" (celsius Nothing Nothing Nothing)
   dotFile "celsius2.dot" (celsius twentyFour Nothing Nothing)
@@ -69,8 +70,8 @@ main = do
   dotFile "maybe3.dot" (addition "Just 3" "Just 4" "Nothing")
   dotFile "maybe4.dot" (addition "Just 3" "Just 4" "Just 7")
 
-  dotFile "perhaps1.dot" (addition "Known 3" "Known 4" "Unknown")
-  dotFile "perhaps2.dot" (addition "Known 3" "Known 4" " Known 7 ")
+  dotFile "perhaps1.dot" (bidirectionalAddition "Known 3" "Known 4" "Unknown")
+  dotFile "perhaps2.dot" (bidirectionalAddition "Known 3" "Known 4" " Known 7 ")
 
   dotFile "intervaladd1.dot" (addition "[2,5]" "[9,10]" "[-∞,∞]")
   dotFile "intervaladd2.dot" (addition "[2,5]" "[9,10]" "[11,15]")
@@ -116,3 +117,5 @@ main = do
   dotFile "powerset-upside-down.dot" powersetUpsideDown
   dotFile "flat.dot" flat
   dotFile "more-information.dot" moreInfo 
+  dotFile "dcpo.dot" dcpo
+  dotFile "tree.dot" tree
