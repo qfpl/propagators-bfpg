@@ -2,9 +2,7 @@ all: slides
 
 SLIDES_TEX = slides.tex
 SLIDES_PDF = slides.pdf
-EXTRA_TEX = extra.tex
-EXTRA_PDF = extra.pdf
-PDFS = SLIDES_PDF EXTRA_PDF
+PDFS = SLIDES_PDF
 LATEX = pdflatex -shell-escape
 LATEX_SLIDES = $(LATEX) $(SLIDES_TEX)
 LATEX_EXTRA = $(LATEX) $(EXTRA_TEX)
@@ -12,17 +10,12 @@ SPELL = aspell check -len_GB
 
 .PHONY: all slides spell open edit o clean diagrams
 
-slides: slides.pdf extra.pdf
+slides: slides.pdf
 
 slides.pdf: $(SLIDES_TEX) celsius.tex circuit.pdf_tex coloured-map.pdf_tex diagrams interval.tex screen.tex set.tex
 	$(LATEX_SLIDES)
 	$(LATEX_SLIDES)
 	$(LATEX_SLIDES)
-
-extra.pdf: $(EXTRA_TEX) diagrams
-	$(LATEX_EXTRA)
-	$(LATEX_EXTRA)
-	$(LATEX_EXTRA)
 
 diagrams: diagrams/Makefile
 	$(MAKE) -C diagrams
